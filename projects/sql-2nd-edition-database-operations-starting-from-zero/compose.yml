@@ -1,0 +1,21 @@
+version: '3'
+services:
+  postgres:
+    container_name: psql-db
+    build: .
+    working_dir: /root
+    restart: always
+    ports: 
+      - "5432:5432"
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d
+      - ./postgres/.psqlrc:/root/.psqlrc
+      - ./postgres/.psql_history:/root/.psql_history
+      - ./Sample:/root/Sample
+      - ./Exercises:/root/Exercises
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+volumes:
+  postgres_volume:
