@@ -7,7 +7,7 @@ rm -rf dist
 mkdir dist
 for file in _posts/*.md; do
   fname=$(basename "$file" .md)
-  links="$links<a is='post_link' href='$fname.html'>記事</a>"
+  links="$links<a is='post-link' href='$fname.html'>記事</a>"
   npx marked -i "_posts/${fname}.md" -o "dist/${fname}.html"
   html=$(cat dist/${fname}.html)
   echo "$pre$html$suf" > "dist/${fname}.html"
