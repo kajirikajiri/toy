@@ -17,7 +17,7 @@
 
 ### lyt-kitのMOCの使い方
 
-![lyt-kitのMOC](/assets/blog/obsidian-moc-usage-2021/homemoc.png)
+![lyt-kitのMOC](assets/blog/obsidian-moc-usage-2021/homemoc.png)
 
 上から見ていきます(!!は使ってるやつ)
 
@@ -56,7 +56,7 @@
 ### 自分のMOCの使い方
 次は自分のHOME MOCです。(!!は使っているやつ)
 
-![自分のMOC](/assets/blog/obsidian-moc-usage-2021/my-home-moc.png)
+![自分のMOC](assets/blog/obsidian-moc-usage-2021/my-home-moc.png)
 tagの使い方がいまいち思いつかず、MOCを大量に作ってみたらこうなりましたね。
 上で紹介したのは省きます。
 

@@ -7,7 +7,7 @@
 
 [VSCodeのMarketPlace](https://marketplace.visualstudio.com/search?term=obsidian&target=VSCode&category=All%20categories&sortBy=Relevance)でObsidianを検索してみましたが、カラーテーマが15個、keybindが2個、BlockChainの拡張機能が1個、その他が1個見つかるのみでした。もう少しうまく検索できそうな気もしますが、自分は見つけることができませんでした。調べた時の画像が以下です。  
 
-![search-obsidian-in-vscode-market-place](/assets/blog/obsidian-vscode-extension/vscode-market-place.png)
+![search-obsidian-in-vscode-market-place](assets/blog/obsidian-vscode-extension/vscode-market-place.png)
 
 ## Obsidianの公式サイトのフォーラムのVSCode拡張機能の話し合い
 

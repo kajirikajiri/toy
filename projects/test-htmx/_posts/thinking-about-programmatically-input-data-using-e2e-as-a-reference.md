@@ -52,7 +52,7 @@ Testcafeはe2eテスト(ブラウザ自動操縦テスト)をするツールで�
 
 こちら[slideshare](https://www.slideshare.net/hnisiji/stac2018-lt-125349647)からの引用です。
 
-![image](/assets/blog/thinking-about-programmatically-input-data-using-e2e-as-a-reference/slideshare.jpeg)
+![image](assets/blog/thinking-about-programmatically-input-data-using-e2e-as-a-reference/slideshare.jpeg)
 
 また、[公式サイトのアーキテクチャ説明](https://testcafe.io/documentation/402631/why-testcafe#an-architecture-like-no-other)にもそのような記述があります。一部を引用しますが、どうやらブラウザとサーバーの間にproxyサーバーをたててそこでJavaScriptを注入しているようです。
 
@@ -113,7 +113,7 @@ Testcafeは[chrome, IE, Edge, Firefox, safariなど複数ブラウザ対応し�
 
 [slideshare](https://www.slideshare.net/hnisiji/stac2018-lt-125349647)から画像を再引用します。
 
-![image](/assets/blog/thinking-about-programmatically-input-data-using-e2e-as-a-reference/slideshare.jpeg)
+![image](assets/blog/thinking-about-programmatically-input-data-using-e2e-as-a-reference/slideshare.jpeg)
 
 cypressも公式サイトのArchitectureをみるとJavaScriptをInjectしていると思われる記述があります。Testcafeのようなproxy serverの記述はありませんが、Nodeのサーバープロセスを背後で実行しているようです。
 

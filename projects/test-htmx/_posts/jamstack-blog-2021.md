@@ -25,7 +25,7 @@ SPAだと、[reactjs.org](https://ja.reactjs.org/docs/glossary.html)に書いて
 
 まずデプロイするために[cloudflareのnextjsのsample](https://developers.cloudflare.com/pages/how-to/deploy-a-nextjs-site)も見たところ、buildコマンドは`next build && next export` となっており、またビルドの構成画面をみるにstartコマンドの登録箇所が無いです。
 
-![cloudflare-build構成画面](/assets/blog/jamstack-blog-2021/cloudflare-build.png)
+![cloudflare-build構成画面](assets/blog/jamstack-blog-2021/cloudflare-build.png)
 
 ないので、[vercel/next.jsのexampleリポジトリ](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript)のbuildコマンドを`next build`から[cloudflareのnextjsのsample](https://developers.cloudflare.com/pages/how-to/deploy-a-nextjs-site)とおなじように、`next build && next exoprt`に変更しました
 
@@ -155,7 +155,7 @@ module.exports = {
 
 ## analyze
 
-![next-analyze](/assets/blog/jamstack-blog-2021/analyze.png)
+![next-analyze](assets/blog/jamstack-blog-2021/analyze.png)
 
 yarn analyzeするだけでパッケージの使用割合も見れます。便利ですね
 
@@ -166,6 +166,6 @@ yarn analyzeするだけでパッケージの使用割合も見れます。便�
 いろんなパッケージが試せて満足しました。Jamstack試してみてはいかがでしょうか。Jamstackめっちゃはやいです（まだ記事が少ないからかも知れないという懸念はある。）。Jamstackしらべたら、静的ファイル配信でサーバー管理費用安いとか、セキュリティ高い、アナリティクス画面がよさそうだなーとかいいところあって決算も良さそうでCloudflareは買いかなーっていう気持ちです。
 
 あと、lighthouseのスコアがなかなか高いです
-![seo](/assets/blog/jamstack-blog-2021/seo.png)
+![seo](assets/blog/jamstack-blog-2021/seo.png)
 
 長期休暇が４日くらい消化されました。

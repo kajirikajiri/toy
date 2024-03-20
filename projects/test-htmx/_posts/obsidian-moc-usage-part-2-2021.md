@@ -17,18 +17,18 @@ MOCの中でタグを使い、MOCの中で分類します
 
 [前回 lyt-kitのMOCの使い方](/obsidian-moc-usage-2021#lyt-kit%E3%81%AEmoc%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9)のところで書いたのですが、[lyt-kit](https://publish.obsidian.md/lyt-kit/)では[Interests MOC](https://publish.obsidian.md/lyt-kit/Umami/Interests+MOC)を使用しています。
 
-![Interests MOC](/assets/blog/obsidian-moc-usage-part-2-2021/interests-moc.png)
+![Interests MOC](assets/blog/obsidian-moc-usage-part-2-2021/interests-moc.png)
 
 このようにパット見すごくごちゃごちゃしていて、あまり見たく無かったのですが(え)、[Interests MOC](https://publish.obsidian.md/lyt-kit/Umami/Interests+MOC)をちゃんと見てみると[Home MOC](https://publish.obsidian.md/lyt-kit/%2BHome)みたいになってます。  
 どこらへんが[Home MOC](https://publish.obsidian.md/lyt-kit/%2BHome)みたいかというと、[Interests MOC](https://publish.obsidian.md/lyt-kit/Umami/Interests+MOC)の下の方に[Commentary on an A-Z list of MOCs](https://publish.obsidian.md/lyt-kit/Umami/Interests+MOC#Commentary+on+an+A-Z+list+of+MOCs)という行があるんですが、その下のあたりが[Home MOC](https://publish.obsidian.md/lyt-kit/%2BHome)のようになっています。
 
 Commentary on an A-Z list of MOCs | Home MOC
 ---- | ---- 
-![Commentary on an A-Z list of MOCs](/assets/blog/obsidian-moc-usage-part-2-2021/example-moc.png)|![Home MOC](/assets/blog/obsidian-moc-usage-part-2-2021/home-moc.png)
+![Commentary on an A-Z list of MOCs](assets/blog/obsidian-moc-usage-part-2-2021/example-moc.png)|![Home MOC](assets/blog/obsidian-moc-usage-part-2-2021/home-moc.png)
 
 すこし見た目は違いますが、他の行も [Home MOC](https://publish.obsidian.md/lyt-kit/%2BHome)のように[MOC]を集めたグループのようになっています
 
-![Interests MOC](/assets/blog/obsidian-moc-usage-part-2-2021/other-mocs.png)
+![Interests MOC](assets/blog/obsidian-moc-usage-part-2-2021/other-mocs.png)
 
 なので、[Interests MOC](https://publish.obsidian.md/lyt-kit/Umami/Interests+MOC)は[Home MOC](https://publish.obsidian.md/lyt-kit/%2BHome)のグループのように扱っているようです。
 
@@ -58,11 +58,11 @@ lyt-kitではMOCを何層にもつなげている
 
 Interests MOC | Language MOC
 ---- | ---- 
-![Interests MOC](/assets/blog/obsidian-moc-usage-part-2-2021/interests-moc-top.png)|![Language MOC](/assets/blog/obsidian-moc-usage-part-2-2021/language-moc-top.png)
+![Interests MOC](assets/blog/obsidian-moc-usage-part-2-2021/interests-moc-top.png)|![Language MOC](assets/blog/obsidian-moc-usage-part-2-2021/language-moc-top.png)
 
 これがあれば、[Home MOC](https://publish.obsidian.md/lyt-kit/%2BHome)から[Interests MOC](https://publish.obsidian.md/lyt-kit/Umami/Interests+MOC)。[Interests MOC](https://publish.obsidian.md/lyt-kit/Umami/Interests+MOC)から[Home MOC](https://publish.obsidian.md/lyt-kit/%2BHome)への移動が可能になります。また、ファイルの繋がりがわかりやすくなります。
 
-![toggle moc](/assets/blog/obsidian-moc-usage-part-2-2021/home-toggle-interests.png)
+![toggle moc](assets/blog/obsidian-moc-usage-part-2-2021/home-toggle-interests.png)
 
 MOCの最初の行には親になるMOCのリンクを書く
 
@@ -73,7 +73,7 @@ MOCの最初の行には親になるMOCのリンクを書く
 ここまでで、MOCのつなぎ方がわかっていればいいな,,,ということで、つぎはタグを使います。  
 [lyt-kit](https://publish.obsidian.md/lyt-kit)では[Writings MOC](https://publish.obsidian.md/lyt-kit/Umami/Writings+MOC)がわかりやすいと思います。
 
-![writings moc](/assets/blog/obsidian-moc-usage-part-2-2021/writings-moc.png)
+![writings moc](assets/blog/obsidian-moc-usage-part-2-2021/writings-moc.png)
 
 ### タグを/で区切る
 
@@ -98,7 +98,7 @@ MOCの最初の行には親になるMOCのリンクを書く
 
 lyt-kit | 自分
 ---- | ---- 
-![lyt-kit](/assets/blog/obsidian-moc-usage-part-2-2021/lyt-kit.png) |![my-obsidian](/assets/blog/obsidian-moc-usage-part-2-2021/my-obsidian.png)
+![lyt-kit](assets/blog/obsidian-moc-usage-part-2-2021/lyt-kit.png) |![my-obsidian](assets/blog/obsidian-moc-usage-part-2-2021/my-obsidian.png)
 
 ディレクトリはこのようになっています。
 また、[lyt-kit](https://publish.obsidian.md/lyt-kit)は実際に触ってみるとわかりやすいです。
@@ -122,11 +122,11 @@ YYYYMMDDHHmmssが最初から入力されてるんで、後ろにjavascript-debu
 
 以上でこうなります
 
-![example input](/assets/blog/obsidian-moc-usage-part-2-2021/example-input.png)
+![example input](assets/blog/obsidian-moc-usage-part-2-2021/example-input.png)
 
 他には、Programming MOCは、他に何があったっけ?思ったらProgramming MOCをクリックします
 
-![programming moc](/assets/blog/obsidian-moc-usage-part-2-2021/programming-moc.png)
+![programming moc](assets/blog/obsidian-moc-usage-part-2-2021/programming-moc.png)
 
 最初の方で説明した感じの構成で一番上にMOCの名前下にタグ一覧です。
 
@@ -134,11 +134,11 @@ YYYYMMDDHHmmssが最初から入力されてるんで、後ろにjavascript-debu
 
 [Interests MOC](https://publish.obsidian.md/lyt-kit/Umami/Interests+MOC)の上には[Home Moc](https://publish.obsidian.md/lyt-kit/%2BHome)へのリンクがあります。
 
-![interests moc example](/assets/blog/obsidian-moc-usage-part-2-2021/interests-moc-example.png)
+![interests moc example](assets/blog/obsidian-moc-usage-part-2-2021/interests-moc-example.png)
 
 [Home MOC](https://publish.obsidian.md/lyt-kit/%2BHome)はこうです
 
-![home moc example](/assets/blog/obsidian-moc-usage-part-2-2021/home-moc-example.png)
+![home moc example](assets/blog/obsidian-moc-usage-part-2-2021/home-moc-example.png)
 
 以上になります
 
