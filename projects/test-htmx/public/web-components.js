@@ -32,3 +32,22 @@ customElements.define('hint-box', class extends HTMLDivElement {
   }
 }, {extends: 'div'});
 
+customElements.define('post-link', class extends HTMLAnchorElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    // https://stackoverflow.com/a/53813523
+    setTimeout(() => {
+      const text = this.innerHTML
+      this.innerHTML = ""
+      const div = document.createElement('div')
+      div.innerHTML = text
+      div.style.margin = "8px 0px"
+      div.style.padding = "8px"
+      div.style.border = "1px solid #e1e4e8"
+      div.style.borderRadius = "4px"
+      this.appendChild(div)
+    })
+  }
+}, { extends: 'a' });
