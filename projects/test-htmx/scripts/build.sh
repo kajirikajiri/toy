@@ -1,0 +1,2 @@
+echo $OSTYPE
+which apt
