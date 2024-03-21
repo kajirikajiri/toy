@@ -13,7 +13,7 @@ for file in _posts/*.md; do
   echo "$pre$html$suf" > "dist/${fname}.html"
 done
 
-cp -r public/* dist/
+rsync -av --exclude='template_*.html' public/* dist/
 
 pre=$(cat public/template_pre.html)
 suf=$(cat public/template_suf.html)
