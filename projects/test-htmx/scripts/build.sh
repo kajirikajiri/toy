@@ -1,5 +1,7 @@
 npm install marked
 
+node scripts/build.js
+
 pre=$(cat _posts/template_pre.html)
 suf=$(cat _posts/template_suf.html)
 links=""
