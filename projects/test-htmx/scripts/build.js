@@ -1,7 +1,7 @@
 const path = require('path');
-const marked = require('marked');
 const fs = require('fs-extra');
-
+const fm = require('front-matter');
+const marked = require('marked');
 let pre = fs.readFileSync('_posts/template_pre.html', 'utf8');
 let suf = fs.readFileSync('_posts/template_suf.html', 'utf8');
 let links = '';
@@ -12,9 +12,10 @@ const directoryPath = '_posts';
   fs.readdirSync(directoryPath).forEach(file => {
     if (path.extname(file) !== '.md') return
     const fname = file.replace(/^.*\/|\..*$/g, '');
-    links = links + `<a is='post-link' href='${fname}.html'>記事</a>`
     const markdown = fs.readFileSync(`_posts/${fname}.md`, 'utf8');
-    const html = marked.parse(markdown);
+    const { attributes, body } = fm(markdown);
+    links = links + `<a is='post-link' href='${fname}.html'>${attributes.title || 'タイトル'}</a>`
+    const html = marked.parse(body);
     fs.writeFileSync(`dist/${fname}.html`, pre+html+suf);
   });
   fs.copy('public', 'dist', {
