@@ -43,11 +43,11 @@ customElements.define('post-link', class extends HTMLAnchorElement {
       title.style.borderRadius = "4px"
       this.appendChild(title)
       const excerpt = document.createElement('div')
-      title.innerHTML = this.getAttribute('excerpt')
-      title.style.margin = "8px 0px"
-      title.style.padding = "8px"
-      title.style.border = "1px solid #e1e4e8"
-      title.style.borderRadius = "4px"
+      excerpt.innerHTML = this.getAttribute('excerpt')
+      excerpt.style.margin = "8px 0px"
+      excerpt.style.padding = "8px"
+      excerpt.style.border = "1px solid #e1e4e8"
+      excerpt.style.borderRadius = "4px"
       this.appendChild(excerpt)
     })
   }
