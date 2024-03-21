@@ -16,6 +16,7 @@ done
 # localだといけるけど、cloudflareにはrsyncがない
 # https://askubuntu.com/a/333641
 #rsync -av --exclude='template_*.html' public/* dist/
+cp -a public/ dist/ && find public/ -name 'template_*.html' -exec bash -c 'rm -rf dist/${1#public/}' _ {} \;
 
 pre=$(cat public/template_pre.html)
 suf=$(cat public/template_suf.html)
