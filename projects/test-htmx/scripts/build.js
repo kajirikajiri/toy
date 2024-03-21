@@ -1,19 +1,15 @@
-const fs = require('fs');
 const path = require('path');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
 const marked = require('marked');
+const fs = require('fs-extra');
 
-const pre = fs.readFileSync('_posts/template_pre.html', 'utf8');
-const suf = fs.readFileSync('_posts/template_suf.html', 'utf8');
+let pre = fs.readFileSync('_posts/template_pre.html', 'utf8');
+let suf = fs.readFileSync('_posts/template_suf.html', 'utf8');
 let links = '';
 const directoryPath = '_posts';
 (async () => {
-  const {stderr} = await exec('rm -rf dist');
-  if (stderr) throw stderr;
+  fs.rmSync('dist', { recursive: true, force: true });
   fs.mkdirSync('dist');
-  const files = await fs.promises.readdir(directoryPath)
-  files.forEach(file => {
+  fs.readdirSync(directoryPath).forEach(file => {
     if (path.extname(file) !== '.md') return
     const fname = file.replace(/^.*\/|\..*$/g, '');
     links = links + `<a is='post-link' href='${fname}.html'>記事</a>`
@@ -21,5 +17,13 @@ const directoryPath = '_posts';
     const html = marked.parse(markdown);
     fs.writeFileSync(`dist/${fname}.html`, pre+html+suf);
   });
+  fs.copy('public', 'dist', {
+    recursive: true,
+    overwrite: true,
+    filter: (src) => !path.basename(src).match(/^template_.*\.html$/),
+  })
+  pre = fs.readFileSync('public/template_pre.html', 'utf8');
+  suf = fs.readFileSync('public/template_suf.html', 'utf8');
+  fs.writeFileSync('dist/index.html', pre+links+suf);
 })();
 
