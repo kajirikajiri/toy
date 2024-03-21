@@ -46,6 +46,8 @@ customElements.define('post-link', class extends HTMLAnchorElement {
       outer.appendChild(title)
       const excerpt = document.createElement('div')
       excerpt.innerHTML = this.getAttribute('excerpt')
+      excerpt.style.fontSize = "14px"
+      excerpt.style.marginTop = "8px"
       outer.appendChild(excerpt)
     })
   }
