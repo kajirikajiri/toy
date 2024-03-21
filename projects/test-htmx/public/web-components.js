@@ -1,9 +1,6 @@
 //https://stackoverflow.com/questions/70201172/this-getattribute-not-working-in-web-component-while-violating-the-spec
 
 customElements.define('my-link', class extends HTMLAnchorElement {
-  constructor() {
-    super();
-  }
   connectedCallback() {
     // https://stackoverflow.com/a/53813523
     setTimeout(() => {
@@ -33,9 +30,6 @@ customElements.define('hint-box', class extends HTMLDivElement {
 }, {extends: 'div'});
 
 customElements.define('post-link', class extends HTMLAnchorElement {
-  constructor() {
-    super();
-  }
   connectedCallback() {
     // https://stackoverflow.com/a/53813523
     setTimeout(() => {

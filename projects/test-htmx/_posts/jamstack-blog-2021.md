@@ -1,3 +1,19 @@
+---
+title: "Next.jsでJamstackなblogを作った"
+excerpt: "みなさんこんにちは、かじりです。Jamstackを使ってブログを作成してみました。Jamstackのおかげで爆速なブログが完成しました。lighthouseの評価も90点以上で満足です。"
+coverImage: "/assets/blog/jamstack-blog-2021/cover.svg"
+date: "2021-05-04 17:35:41"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: blog
+  second: jamstack
+tags: [blog, jamstack, nextjs, d3js]
+---
+
 # Next.jsでJamstackなblogを作った
 
 みなさんこんにちは、かじりです。[Jamstack](https://jamstack.org/), [Next.js](https://nextjs.org/), [D3.js](https://d3js.org/), [Materil-ui](https://material-ui.com/), [remarkjs](https://github.com/remarkjs/remark)で[このblog](https://kajiri.dev/)を作成しました。[AMP](https://amp.dev/)対応も試みたんですが、見た目が好みじゃなかったんでやめましたｗ

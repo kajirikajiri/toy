@@ -1,3 +1,19 @@
+---
+title: "Obsidian MOCの使い方 第２話"
+excerpt: "みなさんこんにちは、かじりです。前回Obsidian MOCの使い方 第１話をまとめていたら、lyt-kitが最新版になっていることに気づきました。その時おっ、これいいやん、ってなったやつをパクってきたらいい感じになったので記事にまとめてみました。前回には無かったタグの使い方、MOCの連携方法についてまとめています。以前より繋がりが見えやすくなり、とても気に入っています。途中で面倒だったタグの一括置換についても紹介しています。"
+coverImage: "/assets/blog/obsidian-moc-usage-part-2-2021/cover.svg"
+date: "2021-05-16 23:03:26"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: editor
+  second: obsidian
+tags: [obsidian]
+---
+
 # Obsidian MOCの使い方 第２話
 
 みなさんこんにちは、かじりです。[前回](/obsidian-moc-usage-2021)MOCの使い方についてまとめましたが、なんかおしいんだよなーっていう気持ちでした。それで[lyt-kit](https://publish.obsidian.md/lyt-kit/)を見ていて、これいいやん！ってやつを真似してみたらいい感じにまとまったので紹介します。たぶんMOCはObsidianのバージョンに関係なく使えると思いますが、一応今のObsidianのバージョンはv0.11.13です

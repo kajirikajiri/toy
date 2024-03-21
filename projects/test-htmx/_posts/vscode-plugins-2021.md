@@ -1,9 +1,23 @@
+---
+title: "vscodeのプラグイン 最近のいちおし２つ"
+excerpt: "みなさんこんにちは、かじりです。今回はvscodeのプラグイン、最近のオススメを２つご紹介します。エディタ上からgithubのurlをコピペできるプラグインと日付の入力ができるプラグインになります。どちらも2021/5がつ頃に見つけて１ヶ月くらい常用しています。どうぞ使ってみてください"
+coverImage: "/assets/blog/vscode-plugins-2021/cover.svg"
+date: "2021-05-20 23:25:34"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: editor
+  second: vscode
+tags: [editor, vscode, plugins]
+---
+
 # vscodeのプラグイン 最近のいちおし２つ
 
 みなさんこんにちは、かじりです。よく[Obsidian](https://obsidian.md/)の記事を書きますが、今回はエディターの[vscode](https://code.visualstudio.com/)についてです。もうね、vscodeなしだと生きていけません（嘘です。[vim](https://www.vim.org/)も好きです）。qiitaでは[vscode 重い](https://qiita.com/kajirikajiri/items/fdca9b22548480fb8565) という記事を書きましたが悪口じゃないんです。本当にときどき重いんです。でもきほん快適でvimの入力も使えて。便利べんりという気持ちです。ちなみに[Insider](https://code.visualstudio.com/insiders/)派です。  
 記事の内容ですが、簡単に言うと日付を入力できるプラグインとvscode上でファイル編集中にコマンドパレットからコマンドを実行するとgithubのmasterや今のブランチのurlをコピーできるというプラグインです。たまに当たりがあるんですよね。そういえば昔kajiriっていうプラグインをvscodeのmaeketplaceに公開したんですが、、、生きてましたｗ興味のある方はどうぞ[こちら](https://marketplace.visualstudio.com/items?itemName=kajiri.kajiri)です。7回もinstallされてる。うれしいですね。（いい拡張機能が２つしか見つかってないんです。がしかし、seo的に3000とか5000文字必要らしいんですね。ちょっと雑談多めでお送りしています）
-
-
 
 ## 日付を入力してくれるvscodeプラグイン
 プラグインは[こちら](https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring)になります。インストール後、使い方は簡単で `Insert Formatted DateTime` をコマンドパレットに入力してみてください。あとはEnterで日付が入力されます。ブログをMarkdownで記述するときとか、vscodeでメモをとる時に、日付、入力、メンドクサって自分は良くなるんです。こう、カレンダーを見て、日付をみて、、もうだめですね、入力する気力がなくなります。この拡張機能があれば、日付→コマンドパレット→insertdとかで一発ですよ。大変便利です。ありがとうございます。あ、ショートカットもあるんでさらに便利に使えそうですね。

@@ -1,3 +1,19 @@
+---
+title: "Obsidian vscode拡張機能について公式サイトで調べた"
+excerpt: "みなさんこんにちは、かじりです。今回はvscodeで使えるobsidianの拡張機能がないか？検索してみました。そういうことで困っている人に届けばいいなぁ"
+coverImage: "/assets/blog/obsidian-vscode-extension/cover.svg"
+date: "2022-12-29 11:40:27"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: editor
+  second: obsidian
+tags: [editor, obsidian, extension]
+---
+
 # Obsidian vscode拡張機能について公式サイトで調べた
 
 みなさんこんにちは、かじりです。今回はvscodeで使えるobsidanの拡張機能を、Obsidanの公式サイトのフォーラムやObsidianの公式サイトのgithubリポジトリから調べてみたので共有したいと思います。

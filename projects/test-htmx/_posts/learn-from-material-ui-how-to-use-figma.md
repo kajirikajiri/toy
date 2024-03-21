@@ -1,3 +1,19 @@
+---
+title: "Material-UIに学ぶFigmaの使い方"
+excerpt: "みなさんこんにちは、かじりです。最近はFigmaを学習しています。oouiを実現したいという目標があります。「使いやすさを重視した総合的なデザインを心がければ、美しさは後からついてくることが多いのです。」というFigmaの教えに習ってまずは使いやすいデザインを身につけるためです。しかし最低限の見た目を再現方法があまり分かりませんでした。なので、自分がfrontendの開発によく使用しているMaterial-UIのコンポーネントがFigmaでどのように表現されているのか？というところを勉強します。"
+coverImage: "/assets/blog/learn-from-material-ui-how-to-use-figma/cover.png"
+date: "2021-09-11 00:49:07"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: design
+  second: figma
+tags: [design, figma, material-ui]
+---
+
 # Material-UIに学ぶFigmaの使い方
 
 みなさんこんにちは、かじりです。

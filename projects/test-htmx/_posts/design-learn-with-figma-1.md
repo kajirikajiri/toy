@@ -1,5 +1,17 @@
 ---
-title: hoge
+title: "エンジニアがfigmaでデザインを学習する"
+excerpt: "みなさんこんにちは、かじりです。JavaScriptの学習をこれ以上やっても80点から100点を目指す感じで非効率を感じたので、デザインの学習をしていこうと思い立ちました。点や線、四角や三角を使って、綺麗なものを作り上げるのがデザインだと思っていましたが、全然違いました。"
+coverImage: "/assets/blog/design-learn-with-figma-1/cover.png"
+date: "2021-08-28 13:22:07"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: design
+  second: figma
+tags: [design, figma]
 ---
 
 # エンジニアがfigmaでデザインを学習する

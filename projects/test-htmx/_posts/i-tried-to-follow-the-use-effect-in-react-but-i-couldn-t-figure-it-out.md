@@ -1,3 +1,19 @@
+---
+title: "reactのuseEffectを追ってみる。useStateなら実装まで辿り着いた。"
+excerpt: "みなさんこんにちは、かじりです。この記事は書いている途中です。reactのuseEffectは便利ですが、実装の詳細がモヤっとしているので追ってみました。"
+coverImage: "/assets/blog/i-tried-to-follow-the-use-effect-in-react-but-i-couldn-t-figure-it-out/cover.png"
+date: "2021-12-30 00:22:56"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: javascript
+  second: react
+tags: [programming, javascript, typescript, react, useEffect, useState]
+---
+
 # reactのuseEffectを追ってみる。useStateなら実装まで辿り着いた。
 
 みなさんこんにちは、かじりです。今回はReactのuseEffectの実装を追ってみました。まだ途中ですが先行公開します。

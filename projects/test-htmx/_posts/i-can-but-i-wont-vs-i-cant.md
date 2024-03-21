@@ -1,3 +1,19 @@
+---
+title: "「できるけどやらない」と「できない」"
+excerpt: "みなさんこんにちは、かじりです。今働いている某社では月１で1on1をやります。毎回ceoには深い話を教えてもらえるのでとても有意義な時間なのですが、今回は「できるけどやらない」と「できない」についてです。"
+coverImage: "/assets/blog/i-can-but-i-wont-vs-i-cant/cover.png"
+date: "2021-12-11 18:03:41"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: onetap
+  second: oneOnOne
+tags: [onetap, oneOnOne]
+---
+
 # 「できるけどやらない」と「できない」
 
 みなさんこんにちは、かじりです。現在onetapで働いています。onetapでは毎月1on1が開催されます。その1on1が毎回とてもためになります。いつもは技術の記事しか書かないのですが、今回は1on1で学んだ「できるけどやらない」と「できない」についてです。

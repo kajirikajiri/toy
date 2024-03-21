@@ -1,3 +1,19 @@
+---
+title: "Next.jsのssgでffmpeg.wasmがブラウザだけで動作するサイトをcloudflareにデプロイしてみた"
+excerpt: "みなさんこんにちは、かじりです。Next.jsでffmpeg.wasmを使ってcloudflareにデプロイしようとしたらSharedArrayBufferとかで色々詰まったのでまとめてみました。"
+coverImage: "/assets/blog/using-ffmpeg-wasm-with-nextjs/cover.png"
+date: "2021-09-26 23:28:07"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: javascript
+  second: wasm
+tags: [javascript, nextjs, wasm, cloudflare, shared-array-buffer]
+---
+
 # Next.jsのssgでffmpeg.wasmがブラウザだけで動作するサイトをcloudflareにデプロイしてみた
 
 みなさんこんにちは、かじりです。Next.jsのssgでffmpeg.wasmがブラウザだけで動作するサイトをcloudflareにデプロイしてみた時の知見を共有します。簡単に言うとSharedArrayBufferを使えるようにする必要があり、serverがresponse headerに必要な情報を付加する必要があります。そこらへんをまとめました。

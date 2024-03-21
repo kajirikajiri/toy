@@ -1,3 +1,19 @@
+---
+title: "typescriptでobjectのtypeguardにinstanceofを使う"
+excerpt: "みなさんこんにちは、かじりです。今回はtypescriptのobjectのtypeguardについてです。"
+coverImage: "/assets/blog/typescript-type-guard-object/cover.png"
+date: "2022-01-22 19:21:07"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: sidework
+  second: search
+tags: [typescript, typeguard, instanceof]
+---
+
 # typescriptでobjectのtypeguardにinstanceofを使う
 
 みなさんこんにちは、かじりです。今回はobjectのtypeguardについてです。

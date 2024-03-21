@@ -1,3 +1,19 @@
+---
+title: "Obsidianの使い方"
+excerpt: "みなさんこんにちは、かじりです。Obsidianの使い方は最初すごく悩みました。Obsidianは細かいところに手が届く感じで使いやすいのですが、どのように使っていけばいいのかわからなかったです。今回は自分のObsidian使い方を経験を踏まえてまとめてみました。"
+coverImage: "/assets/blog/obsidian-usage-2021/cover.svg"
+date: "2021-05-20 22:13:24"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: editor
+  second: obsidian
+tags: [obsidian]
+---
+
 # Obsidianの使い方
 
 みなさんこんにちは、かじりです。今回は１年半くらい使用したObsidianについてです。小分けに書いたので、もくじ(Table of Contents)から探してもらえるとわかりやすいと思います。

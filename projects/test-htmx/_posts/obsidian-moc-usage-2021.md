@@ -1,3 +1,19 @@
+---
+title: "Obsidian MOCの使い方 第１話"
+excerpt: "みなさんこんにちは、かじりです。ObsidianのMOCの使い方は最初すごく悩みました。Obsidianはいろんな機能があり、便利そうなのは使ってみるとわかるのですが、どのように使っていけばいいのかわからなかったです。今回は自分のObsidian使い方です"
+coverImage: "/assets/blog/obsidian-moc-usage-2021/cover.svg"
+date: "2021-05-04 16:54:08"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: editor
+  second: obsidian
+tags: [obsidian]
+---
+
 # Obsidian MOCの使い方 第１話
 
 みなさんこんにちは、かじりです。今回はObsidianについての記事です。Obsidianは多機能でちょっと使ってみると便利そうって感じるんです。ただ、どうやって使っていけばいいねん!ってなります（なりますよね？）。なので２年位使ってみたObsidianのMOCの使い方をまとめました。

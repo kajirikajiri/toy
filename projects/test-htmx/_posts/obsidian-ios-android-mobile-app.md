@@ -1,3 +1,19 @@
+---
+title: "Obsidianのiosとandroidのモバイルアプリが公開された"
+excerpt: "みなさんこんにちは、かじりです。Obsidianのモバイルアプリがbetaから正式版になりました。待っていた人も多いのではないでしょうか。気になる同期の部分など調べてみました。"
+coverImage: "/assets/blog/obsidian-ios-android-mobile-app/cover.svg"
+date: "2021-07-17 12:59:08"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: editor
+  second: obsidian
+tags: [obsidian, mobile, app, android, ios]
+---
+
 # Obsidianのiosとandroidのモバイルアプリが公開された
 
 みなさんこんにちは、かじりです。今回はObsidianのmobileアプリについての記事です。Obsidianのios、androidアプリが公開されました。今までbetaでしたが、正式版が公開されたようで嬉しいです。

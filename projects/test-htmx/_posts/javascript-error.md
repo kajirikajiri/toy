@@ -1,3 +1,19 @@
+---
+title: "JavaScriptのErrorの使い方"
+excerpt: "みなさんこんにちは、かじりです。この記事はJavaScriptのErrorについて書いています"
+coverImage: "/assets/blog/javascript-error/cover.png"
+date: "2023-04-22 21:43:08"
+author:
+  name: かじり
+  picture: "/me.jpg"
+ogImage:
+  url: "/ogp/1200x630.png"
+category:
+  first: javascript
+  second: usage
+tags: [javascript, usage, error]
+---
+
 # JavaScriptのErrorの使い方
 
 みなさんこんにちは、かじりです。この記事はJavaScriptのErrorについて書きます。
