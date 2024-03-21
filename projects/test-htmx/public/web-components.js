@@ -35,13 +35,20 @@ customElements.define('post-link', class extends HTMLAnchorElement {
     setTimeout(() => {
       const text = this.innerHTML
       this.innerHTML = ""
-      const div = document.createElement('div')
-      div.innerHTML = text
-      div.style.margin = "8px 0px"
-      div.style.padding = "8px"
-      div.style.border = "1px solid #e1e4e8"
-      div.style.borderRadius = "4px"
-      this.appendChild(div)
+      const title = document.createElement('div')
+      title.innerHTML = text
+      title.style.margin = "8px 0px"
+      title.style.padding = "8px"
+      title.style.border = "1px solid #e1e4e8"
+      title.style.borderRadius = "4px"
+      this.appendChild(title)
+      const excerpt = document.createElement('div')
+      title.innerHTML = this.getAttribute('excerpt')
+      title.style.margin = "8px 0px"
+      title.style.padding = "8px"
+      title.style.border = "1px solid #e1e4e8"
+      title.style.borderRadius = "4px"
+      this.appendChild(excerpt)
     })
   }
 }, { extends: 'a' });

@@ -14,7 +14,7 @@ const directoryPath = '_posts';
     const fname = file.replace(/^.*\/|\..*$/g, '');
     const markdown = fs.readFileSync(`_posts/${fname}.md`, 'utf8');
     const { attributes, body } = fm(markdown);
-    links = links + `<a is='post-link' href='${fname}.html'>${attributes.title || 'タイトル'}</a>`
+    links = links + `<a is='post-link' href='${fname}.html' excerpt='${attributes.excerpt}'>${attributes.title || '無名'}</a>`
     const html = marked.parse(body);
     fs.writeFileSync(`dist/${fname}.html`, pre+html+suf);
   });
