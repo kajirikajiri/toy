@@ -10,7 +10,7 @@ customElements.define('my-link', class extends HTMLAnchorElement {
       const div = document.createElement('div')
       div.innerHTML = text
       div.style.margin = "8px 0px"
-      div.style.padding = "8px"
+      div.style.padding = "8px 0px"
       this.appendChild(div)
     })
   }
@@ -131,7 +131,7 @@ customElements.define('blog-author', class extends HTMLElement {
 
     const a = document.createElement('a');
     a.style.color = "#9E9E9E"
-    a.style.padding = "8px"
+    a.style.padding = "8px 0px"
     a.style.fontSize = "12px"
     a.href = this.getAttribute('href')
     a.innerHTML = "著: 中村 一貴(かじり)"
