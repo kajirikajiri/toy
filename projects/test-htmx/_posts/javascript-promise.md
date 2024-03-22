@@ -1,20 +1,10 @@
 ---
 title: "JavaScriptのpromiseの使い方"
 excerpt: "みなさんこんにちは、かじりです。この記事はJavaScriptのpromiseについての説明をする記事です。例題多めで書いていきますので、実行しながら確認してみると理解が深まると思います。"
-coverImage: "/assets/blog/javascript-promise/cover.png"
-date: "2023-04-17 00:25:40"
-author:
-  name: かじり
-  picture: "/me.jpg"
-ogImage:
-  url: "/ogp/1200x630.png"
-category:
-  first: javascript
-  second: usage
+created_at: "2023-04-17 00:25:40"
+updated_at: "2023-04-17 00:25:40"
 tags: [javascript, usage, promise]
 ---
-
-# JavaScriptのpromiseの使い方
 
 みなさんこんにちは、かじりです。この記事はJavaScriptのpromiseを解説しています。
 

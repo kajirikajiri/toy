@@ -1,20 +1,10 @@
 ---
 title: "ethereumスタック"
 excerpt: "みなさんこんにちは、かじりです。この記事は書いている途中です。"
-coverImage: "/assets/blog/ethereum-stack/cover.png"
-date: "2021-12-30 00:22:56"
-author:
-  name: かじり
-  picture: "/me.jpg"
-ogImage:
-  url: "/ogp/1200x630.png"
-category:
-  first: ethereum
-  second: stack
+created_at: "2021-12-30 00:22:56"
+updated_at: "2021-12-30 00:22:56"
 tags: [programming, ethereum, stack]
 ---
-
-# ethereumスタック
 
 みなさんこんにちは、かじりです。今回はEthereumのstackについてです。まだ途中ですが先行公開します。
 

@@ -1,20 +1,10 @@
 ---
 title: "Programmatically input data using e2e as a reference"
 excerpt: "みなさんこんにちは、かじりです。ブラウザ自動入力難しいです。クリックすると文字が消えるのが一番辛いですね。入力できた！あとはボタンを押して、、、あ、文字が消えたなぜ！！？そういう困ったときに参考にしてほしい情報をまとめました。"
-coverImage: "/assets/blog/thinking-about-programmatically-input-data-using-e2e-as-a-reference/cover.png"
-date: "2021-06-13 19:28:07"
-author:
-  name: かじり
-  picture: "/me.jpg"
-ogImage:
-  url: "/ogp/1200x630.png"
-category:
-  first: javascript
-  second: autofill
+created_at: "2021-06-13 19:28:07"
+updated_at: "2021-06-13 19:28:07"
 tags: [javascript, e2e, programmatically]
 ---
-
-# Programmatically input data using e2e as a reference
 
 みなさんこんにちは、かじりです。ブラウザ自動入力にはいつも困っています。文字を入力するところまでは割とできるんですが、クリックすると消えたりするんですよね。そういう自分の経験から困った時の対応方法をまとめました。よく方法を忘れる自分のための備忘録となっています。そもそもこの領域をやっている人が少ないと思いますが、検索で見つかってくれれば嬉しいな。自分が主に使っているのは、Chrome-Extensionの[executeScript](https://developer.chrome.com/docs/extensions/reference/tabs/#method-executeScript)によるJavaScriptの実行や、Flutterのwebview_flutterにある[evaluateJavascript](https://pub.dev/documentation/webview_flutter/latest/webview_flutter/WebViewController/evaluateJavascript.html)です。FlutterのevaluateJavaScriptの方が融通が効く印象で好きです。
 

@@ -1,20 +1,10 @@
 ---
 title: "エンジニアの土日の副業にMENTAがオススメ"
 excerpt: "みなさんこんにちは、かじりです。以前エンジニアの土日の副業について書きました。今回オススメするMENTAだと、土日に限らず空き時間でも副業することができます。ぜひ始めてみてはいかがでしょうか。"
-coverImage: "/assets/blog/engineer-side-job-menta/cover.png"
-date: "2021-08-28 20:33:07"
-author:
-  name: かじり
-  picture: "/me.jpg"
-ogImage:
-  url: "/ogp/1200x630.png"
-category:
-  first: sidework
-  second: search
+created_at: "2021-08-28 20:33:07"
+updated_at: "2021-08-28 20:33:07"
 tags: [sidework, engineer, menta]
 ---
-
-# エンジニアの土日の副業にMENTAがオススメ
 
 みなさんこんにちは、かじりです。以前[こちら](/engineer-side-job-once-a-week)の記事でエンジニアの土日の副業の探し方を記載しました。以降も副業のやり方を探していて、MENTAというサービスを見つけました。
 

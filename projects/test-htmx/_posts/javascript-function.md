@@ -1,20 +1,10 @@
 ---
 title: "JavaScriptのfunctionの使い方"
 excerpt: "みなさんこんにちは、かじりです。この記事はJavaScriptのpromise, async, awaitを説明するために、functionの説明からやっていこうと思い、記載しています。いろんなfunctionの使い方が書いてあるので参考にしてください。"
-coverImage: "/assets/blog/javascript-function/cover.png"
-date: "2021-07-04 23:43:08"
-author:
-  name: かじり
-  picture: "/me.jpg"
-ogImage:
-  url: "/ogp/1200x630.png"
-category:
-  first: javascript
-  second: usage
+created_at: "2021-07-04 23:43:08"
+updated_at: "2021-07-04 23:43:08"
 tags: [javascript, usage, function]
 ---
-
-# JavaScriptのfunctionの使い方
 
 みなさんこんにちは、かじりです。この記事はJavaScriptのpromise, async, awaitを説明するために、functionの説明からやっていこうと思い、記載しています。
 まずは、パソコンで開きましょう。スマホだとコードを実行できませんし、コードが読みづらいと思います。スマホだったら、一回ブックマークして、パソコンで開き直しましょう。

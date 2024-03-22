@@ -10,8 +10,6 @@ customElements.define('my-link', class extends HTMLAnchorElement {
       div.innerHTML = text
       div.style.margin = "8px 0px"
       div.style.padding = "8px"
-      div.style.border = "1px solid #e1e4e8"
-      div.style.borderRadius = "4px"
       this.appendChild(div)
     })
   }
@@ -36,19 +34,21 @@ customElements.define('post-link', class extends HTMLAnchorElement {
       const text = this.innerHTML
       this.innerHTML = ""
       const outer = document.createElement('div')
-      outer.style.margin = "8px 0px"
-      outer.style.padding = "8px"
-      outer.style.border = "1px solid #e1e4e8"
-      outer.style.borderRadius = "4px"
+      outer.style.marginBottom = "48px"
+      //outer.style.border = "1px solid #e1e4e8"
+      //outer.style.borderRadius = "4px"
       this.appendChild(outer)
       const title = document.createElement('div')
       title.innerHTML = text
+      title.style.marginBottom = "8px"
+      title.style.fontSize = "16px"
       outer.appendChild(title)
       const excerpt = document.createElement('div')
       excerpt.innerHTML = this.getAttribute('excerpt')
-      excerpt.style.fontSize = "14px"
-      excerpt.style.marginTop = "8px"
       outer.appendChild(excerpt)
+      const date = document.createElement('div')
+      date.innerHTML = this.getAttribute('date')
+      outer.appendChild(date)
     })
   }
 }, { extends: 'a' });

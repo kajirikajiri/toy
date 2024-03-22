@@ -1,20 +1,10 @@
 ---
 title: "MENTAを初めてもうすぐ３ヶ月なので振り返ってみた"
 excerpt: "みなさんこんにちは、かじりです。MENTAの初めての売り上げが6/28日でした。そこから数えてもうすぐ３ヶ月です。今までの経験をまとめてみました。"
-coverImage: "/assets/blog/ive-been-doing-menta-for-almost-3-months-now/cover.png"
-date: "2021-09-19 22:03:41"
-author:
-  name: かじり
-  picture: "/me.jpg"
-ogImage:
-  url: "/ogp/1200x630.png"
-category:
-  first: sidework
-  second: search
+created_at: "2021-09-19 22:03:41"
+updated_at: "2021-09-19 22:03:41"
 tags: [sidework, engineer, menta]
 ---
-
-# MENTAを初めてもうすぐ３ヶ月なので振り返ってみた
 
 みなさんこんにちは、かじりです。MENTAでメンター（教える側）を初めてもうすぐ３ヶ月になります。最近ではMENTAスコアが上がってきており、MENTAでのレビューも増えてきました。自分のプランに興味を持って連絡してきてくださる方もいらしてとてもありがたいです。過去には、メンティーの方（教わる側）が増えすぎたらそれぞれの人への対応が雑になってしまうのではないか？という懸念もありましたが、今の所そういったこともなく、丁寧な対応ができていると思っています（あくまで自分の評価です）。今ではエンジニア４年目になり、プログラミングはなんなくこなせるようになりました。過去に独学でプログラミングを始めた時は全然わからなくて、とても大変でした。変数とか引数で本当に詰まりました。[こちら](https://qiita.com/kajirikajiri/items/9ffe03bf2919c99b964a)過去のqiitaの記事です。この記事の執筆時が2018年09月01日となっています。懐かしいなあ。。こういった過去の経験から、プログラミングで困っている方の力になりたいと思っています。お困りの方いらしたら、[MENTA](https://menta.work/plan/4010)や[Twitter](https://twitter.com/kajirikajiri)でお声がけください。
 

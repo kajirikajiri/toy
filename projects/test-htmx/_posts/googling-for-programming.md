@@ -1,20 +1,10 @@
 ---
 title: "プログラミングのググり方"
 excerpt: "みなさんこんにちは、かじりです。今回はググり方ですね。プログラミングでエラーが発生したときに必須です。ググり方をちょっと変更すれば見つかる答えがあります。その方法をたくさん書きました！参考になればいいな"
-coverImage: "/assets/blog/googling-for-programming/cover.png"
-date: "2021-07-03 00:03:10"
-author:
-  name: かじり
-  picture: "/me.jpg"
-ogImage:
-  url: "/ogp/1200x630.png"
-category:
-  first: programming
-  second: googling
+created_at: "2021-07-03 00:03:10"
+updated_at: "2021-07-03 00:03:10"
 tags: [programming, googling, beginner]
 ---
-
-# プログラミングのググり方
 
 みなさんこんにちは、かじりです。今回はググり方です。方法は色々ありますのでわかる限り全部を記載してみました。このパターンどうすればいいんだ？？って時は[自分のtwitter](https://twitter.com/kajirikajiri)で聞いてもらえればお答えできるかもしれません。
 

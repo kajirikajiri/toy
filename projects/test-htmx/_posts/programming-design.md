@@ -1,20 +1,10 @@
 ---
 title: "プログラミング設計"
 excerpt: "みなさんこんにちは、かじりです。この記事は書いている途中です。"
-coverImage: "/assets/blog/programming-design/cover.png"
-date: "2021-12-18 20:38:56"
-author:
-  name: かじり
-  picture: "/me.jpg"
-ogImage:
-  url: "/ogp/1200x630.png"
-category:
-  first: programming
-  second: design
+created_at: "2021-12-18 20:38:56"
+updated_at: "2021-12-18 20:38:56"
 tags: [programming, design, javascript, typescript]
 ---
-
-# プログラミング設計
 
 みなさんこんにちは、かじりです。プログラミングの設計のことを勉強しようと思って色々書き込んでいます。とりあえず公開しています。
 
