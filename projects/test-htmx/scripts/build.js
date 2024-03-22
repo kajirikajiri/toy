@@ -20,7 +20,7 @@ const directoryPath = '_posts';
 
     const convertDate = (str) => new Date(str).toISOString().split('T')[0].replace(/-/g, '/')
     // rootページに追加する各ページへのリンクを作成
-    links.push([attributes.updated_at,`<a is='post-link' href='${fname}.html' excerpt='${attributes.excerpt}' date='${convertDate(attributes.updated_at)}'>${attributes.title}</a>`]);
+    links.push([attributes.updated_at,`<post-link href='${fname}.html' excerpt='${attributes.excerpt}' date='${convertDate(attributes.updated_at)}'>${attributes.title}</post-link>`]);
 
     // titleをh1に変換して追加
     const html = marked.parse("# "+attributes.title+"\n"+"<div style='text-align:end; color:#9E9E9E;font-size:12px;margin-bottom:16px;'>更新: "+convertDate(attributes.updated_at)+", 作成: "+convertDate(attributes.created_at)+"</div>"+"\n\n"+body);

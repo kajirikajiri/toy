@@ -28,59 +28,114 @@ customElements.define('hint-box', class extends HTMLDivElement {
   }
 }, {extends: 'div'});
 
-customElements.define('post-link', class extends HTMLAnchorElement {
+customElements.define('post-link', class extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
   connectedCallback() {
-    // https://stackoverflow.com/a/53813523
     setTimeout(() => {
-      const text = this.innerHTML
-      this.innerHTML = ""
+    this.shadowRoot.innerHTML = `
+      <style>
+        a {
+          text-decoration: none;
+        }
 
-      const outer = document.createElement('div')
-      outer.style.marginBottom = "48px"
-      this.appendChild(outer)
+        a:hover {
+          text-decoration: underline;
+        }
+      </style>
+    `;
 
-      const title = document.createElement('div')
-      title.innerHTML = text
-      title.style.marginBottom = "8px"
-      title.style.fontSize = "16px"
-      outer.appendChild(title)
+    const text = this.innerHTML
+    this.innerHTML = ""
 
-      const excerpt = document.createElement('div')
-      excerpt.innerHTML = this.getAttribute('excerpt')
-      outer.appendChild(excerpt)
+    const outer = document.createElement('a')
+    outer.href = this.getAttribute('href')
+    this.shadowRoot.appendChild(outer)
 
-      const date = document.createElement('div')
-      date.innerHTML = this.getAttribute('date')
-      outer.appendChild(date)
+    const title = document.createElement('div')
+    title.innerHTML = text
+    title.style.marginBottom = "8px"
+    outer.appendChild(title)
+
+    const excerpt = document.createElement('div')
+    excerpt.innerHTML = this.getAttribute('excerpt')
+    excerpt.style.fontSize = "14px"
+    outer.appendChild(excerpt)
+
+    const date = document.createElement('div')
+    date.innerHTML = this.getAttribute('date')
+    date.style.fontSize = "14px"
+    outer.appendChild(date)
+
+    const pad = document.createElement('div')
+    pad.style.marginBottom = "48px"
+    outer.appendChild(pad)
     })
   }
-}, { extends: 'a' });
+});
 
-customElements.define('blog-name', class extends HTMLAnchorElement {
-  connectedCallback() {
-    // https://stackoverflow.com/a/53813523
-    setTimeout(() => {
-      this.innerHTML = "かじりブログ"
-      this.style.fontSize = "32px"
-      this.style.color = "#333333"
-    })
+customElements.define('blog-name', class extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
   }
-}, { extends: 'a' });
 
-customElements.define('blog-author', class extends HTMLAnchorElement {
   connectedCallback() {
-    // https://stackoverflow.com/a/53813523
-    setTimeout(() => {
-      this.innerHTML = ""
-      this.style.color = "#9E9E9E"
+    this.shadowRoot.innerHTML = `
+      <style>
+        a {
+          text-decoration: none;
+        }
 
-      const div = document.createElement('div')
-      div.innerHTML = "著: 中村 一貴(かじり)"
-      div.style.textAlign = "end"
-      div.style.fontSize = "12px"
-      this.appendChild(div)
-    })
+        a:hover {
+          text-decoration: underline;
+        }
+      </style>
+    `;
+    const div = document.createElement('div')
+    this.shadowRoot.appendChild(div);
+
+    const a = document.createElement('a');
+    a.style.color = "#333333"
+    a.style.fontSize = "32px"
+    a.href = this.getAttribute('href')
+    a.innerHTML = "かじりブログ"
+    div.appendChild(a)
   }
-}, { extends: 'a' });
+});
 
+customElements.define('blog-author', class extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        a {
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      </style>
+    `;
+    const div = document.createElement('div')
+    div.style.textAlign = "end"
+    this.shadowRoot.appendChild(div);
+
+    const a = document.createElement('a');
+    a.style.color = "#9E9E9E"
+    a.style.padding = "8px"
+    a.style.fontSize = "12px"
+    a.href = this.getAttribute('href')
+    a.innerHTML = "著: 中村 一貴(かじり)"
+    div.appendChild(a)
+  }
+});
 
