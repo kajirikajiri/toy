@@ -22,9 +22,9 @@ variable "conoha_auth_url" {
   sensitive   = true
 }
 
-variable "conoha_secgroup_name" {
-  description = "ConoHaのsecurtygroupの名前"
-  type        = string
+variable "conoha_security_groups" {
+  description = "ConoHaのsecurty_groupの名前リスト"
+  type        = list(string)
   sensitive   = true
 }
 
@@ -78,6 +78,12 @@ variable "conoha_flavor_id" {
 
 variable "conoha_key_pair" {
   description = "ConoHaのkey_pair"
+  type        = string
+  sensitive   = true
+}
+
+variable "conoha_user_data" {
+  description = "ConoHaのuser_data"
   type        = string
   sensitive   = true
 }
