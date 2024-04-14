@@ -28,36 +28,6 @@ variable "conoha_security_groups" {
   sensitive   = true
 }
 
-variable "conoha_secgroup_description" {
-  description = "ConoHaのsecurtygroupの説明"
-  type        = string
-  sensitive   = true
-}
-
-variable "conoha_allow_port" {
-  description = "ConoHaの許可するPort"
-  type        = number
-  sensitive   = true
-}
-
-variable "conoha_allow_ethertype" {
-  description = "ConoHaの許可するEthtype"
-  type        = string
-  sensitive   = true
-}
-
-variable "conoha_allow_direction" {
-  description = "ConoHaの許可するdirection"
-  type        = string
-  sensitive   = true
-}
-
-variable "conoha_allow_protocol" {
-  description = "ConoHaの許可するprotocol"
-  type        = string
-  sensitive   = true
-}
-
 variable "conoha_instance_name" {
   description = "ConoHaのinstance名"
   type        = string
@@ -72,18 +42,6 @@ variable "conoha_image_id" {
 
 variable "conoha_flavor_id" {
   description = "ConoHaのflavor_id"
-  type        = string
-  sensitive   = true
-}
-
-variable "conoha_key_pair" {
-  description = "ConoHaのkey_pair"
-  type        = string
-  sensitive   = true
-}
-
-variable "conoha_user_data" {
-  description = "ConoHaのuser_data"
   type        = string
   sensitive   = true
 }
