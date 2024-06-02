@@ -1,0 +1,10 @@
+# 2.xを使用。graphql-rubyのtutorialをするのに必要だった。
+FROM ruby:2
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs default-mysql-client vim
+RUN mkdir /myapp
+WORKDIR /myapp
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
+# --pathが非推奨なので、configにセット。 https://qiita.com/devzooiiooz/items/8babd82f780f01812f9d
+RUN bundle config set path 'vendor/bundle' && bundle install
+COPY . /myapp
