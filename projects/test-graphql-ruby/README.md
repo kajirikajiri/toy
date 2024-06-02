@@ -1,5 +1,8 @@
 # README
 
+途中
+https://www.howtographql.com/graphql-ruby/3-mutations/
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
