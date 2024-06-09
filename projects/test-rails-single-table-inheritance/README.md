@@ -7,6 +7,7 @@ https://qiita.com/yebihara/items/9ecb838893ad99be0561
 - Single Table Inheritance / 単一テーブル継承
 - Class Table Inheritance / クラステーブル継承
 - Concrete Class Inheritance / 具象クラス継承
+↑ 気づいたけど、なんかタイポある。Concrete Table InheritanceとClass Table Inheritanceやな。紛らわしいななんか。
 
 https://api.rubyonrails.org/classes/ActiveRecord/Inheritance.html
 inheritance_columnを定義すると、stiに使用するcolumnを変えられる。
