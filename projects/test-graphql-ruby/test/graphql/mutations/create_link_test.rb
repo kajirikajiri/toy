@@ -6,7 +6,6 @@ class Mutations::CreateLinkTest < ActiveSupport::TestCase
   end
 
   test 'create a new link' do
-    debugger
     link = perform(
       url: 'http://example.com',
       description: 'description',

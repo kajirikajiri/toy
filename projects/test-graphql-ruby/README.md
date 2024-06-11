@@ -1,7 +1,6 @@
 # README
 
-途中。6の最初からやる。
-https://www.howtographql.com/graphql-ruby/6-error-handling/
+完了した https://www.howtographql.com/graphql-ruby/9-summary/
 
 null true
 エンドポイントの戻り値がnullableである。null falseでnull以外
