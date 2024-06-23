@@ -1,5 +1,5 @@
 import { Button, ChakraProvider, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
-import { Control, Controller, Form, FormState, SubmitHandler, UseFormRegister, UseFormWatch, useFieldArray, useForm } from 'react-hook-form'
+import { Control, Controller, Form, FormState, SubmitHandler, UseFormRegister, UseFormWatch, useFieldArray, useForm, useWatch } from 'react-hook-form'
 
 interface IFormInput {
   name1: string
@@ -57,13 +57,16 @@ function HookForm2({control, formState}: {control: Control<IFormInput, any>, for
 }
 
 
-function HookForm3({control, watch, register, formState}: {control: Control<IFormInput, any>, watch: UseFormWatch<IFormInput>, register: UseFormRegister<IFormInput>, formState: FormState<IFormInput>}) {
+function HookForm3({control, register, formState}: {control: Control<IFormInput, any>, register: UseFormRegister<IFormInput>, formState: FormState<IFormInput>}) {
   console.log("HookForm3")
   const { fields, append } = useFieldArray({
     control,
     name: 'name3',
   });
-  const watchFieldArray = watch("name3");
+  const watchFieldArray = useWatch({
+    control,
+    name: 'name3',
+  });
   const controlledFields = fields.map((field, index) => {
     return {
       ...field,
@@ -127,7 +130,7 @@ function HookForm4({control, register}: {control: Control<IFormInput, any>, regi
 }
 
 function App() {
-  const { register, control, formState, handleSubmit, watch } = useForm<IFormInput>({
+  const { register, control, formState, handleSubmit } = useForm<IFormInput>({
     defaultValues: {
       name1: '',
       name2: '',
@@ -150,7 +153,7 @@ function App() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <HookForm1 formState={formState} register={register} />
         <HookForm2 formState={formState} control={control} />
-        <HookForm3 control={control} watch={watch} register={register} formState={formState} />
+        <HookForm3 control={control} register={register} formState={formState} />
         <HookForm4 control={control} register={register} />
         <Button mt={4} colorScheme='teal' isLoading={formState.isSubmitting} type='submit'>
           Submit
