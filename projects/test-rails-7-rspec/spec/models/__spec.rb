@@ -42,4 +42,27 @@ describe type: :model do
       expect { klass }.to raise_error(ArgumentError, 'You tried to define an enum named "status_two" on the model "", but this will generate a instance method "active?", which is already defined by another enum.')
     end
   end
+  describe 'validate_each' do
+    create_spec_table :samples do |t|
+      t.integer :price
+    end
+    let(:klass) do
+      Class.new(ApplicationRecord) do |klass|
+        validates :price, multiple_of_five: true
+        klass.table_name = 'samples'
+        def self.name
+          'Sample'
+        end
+      end
+    end
+
+    it do
+      record = klass.new(price: 10)
+      expect(record).to be_valid
+    end
+    it do
+      record = klass.new(price: 11)
+      expect(record).not_to be_valid
+    end
+  end
 end
