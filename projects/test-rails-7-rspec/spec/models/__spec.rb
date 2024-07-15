@@ -1,5 +1,21 @@
 require 'rails_helper'
 
+# https://qiita.com/teitei_tk/items/772856c981f295a3cfdf
+# テスト用のテーブルを作成するためのヘルパーメソッド
+def create_spec_table(name, &block)
+  before(:all) do
+    m = ActiveRecord::Migration.new
+    m.verbose = false
+    m.create_table name, &block
+  end
+
+  after(:all) do
+    m = ActiveRecord::Migration.new
+    m.verbose = false
+    m.drop_table name
+  end
+end
+
 describe type: :model do
   describe 'freeze_time' do
     context 'when freeze_time is called' do
@@ -11,20 +27,9 @@ describe type: :model do
     end
   end
   describe 'enum conflict' do
-    before(:all) do
-      m = ActiveRecord::Migration.new
-      m.verbose = false
-      m.create_table :samples do |t|
-        t.integer :status, null: false
-      end
+    create_spec_table :samples do |t|
+      t.integer :status, null: false
     end
-
-    after(:all) do
-      m = ActiveRecord::Migration.new
-      m.verbose = false
-      m.drop_table :samples
-    end
-
     let(:klass) do
       Class.new(ApplicationRecord) do |klass|
         enum :status_one, { active: 0, inactive: 1 }, default: :active

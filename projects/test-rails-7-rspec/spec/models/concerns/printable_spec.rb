@@ -42,19 +42,3 @@ describe Printable, type: :model do
     end
   end
 end
-
-
-# 記事にあるように、before(:all) と after(:all) でテーブルを作成・削除するようなテストを書くこともできる。
-# def create_spec_table(name, &block)
-#   before(:all) do
-#     m = ActiveRecord::Migration.new
-#     m.verbose = false
-#     m.create_table name, &block
-#   end
-#
-#   after(:all) do
-#     m = ActiveRecord::Migration.new
-#     m.verbose = false
-#     m.drop_table name
-#   end
-# end
