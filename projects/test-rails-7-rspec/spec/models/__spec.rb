@@ -49,4 +49,102 @@ describe type: :model do
       expect(record).not_to be_valid
     end
   end
+
+  # https://api.rubyonrails.org/classes/ActiveModel/Dirty.html
+  describe 'ActiveModel::Dirty methods' do
+    create_spec_table :samples do |t|
+      t.string :name
+      t.integer :age
+    end
+    let(:klass) do
+      Class.new(ApplicationRecord) do |klass|
+        klass.table_name = 'samples'
+      end
+    end
+
+    it '*_change' do
+      record = klass.new
+      expect(record.name_change).to eq nil
+      record.name = 'a'
+      expect(record.name_change).to eq [nil, 'a']
+      record.save!
+      expect(record.name_change).to eq nil
+      record.name = 'b'
+      expect(record.name_change).to eq ['a', 'b']
+      record.save!
+      expect(record.name_change).to eq nil
+    end
+    it '*_changed?' do
+      record = klass.new
+      expect(record.name_changed?).to eq false
+      record.name = 'a'
+      expect(record.name_changed?).to eq true
+      record.save!
+      expect(record.name_changed?).to eq false
+      record.name = 'b'
+      expect(record.name_changed?).to eq true
+      record.save!
+      expect(record.name_changed?).to eq false
+    end
+    it '*_previous_change' do
+      record = klass.new
+      expect(record.name_previous_change).to eq nil
+      record.name = 'a'
+      expect(record.name_previous_change).to eq nil
+      record.save!
+      expect(record.name_previous_change).to eq [nil, 'a']
+      record.name = 'b'
+      expect(record.name_previous_change).to eq [nil, 'a']
+      record.save!
+      expect(record.name_previous_change).to eq ['a', 'b']
+    end
+    it '*_previously_changed?' do
+      record = klass.new
+      expect(record.name_previously_changed?).to eq false
+      record.name = 'a'
+      expect(record.name_previously_changed?).to eq false
+      record.save!
+      expect(record.name_previously_changed?).to eq true
+      record.name = 'b'
+      expect(record.name_previously_changed?).to eq true
+      record.save!
+      expect(record.name_previously_changed?).to eq true
+    end
+    it '*_previously_was' do
+      record = klass.new
+      expect(record.name_previously_was).to eq nil
+      record.name = 'a'
+      expect(record.name_previously_was).to eq nil
+      record.save!
+      expect(record.name_previously_was).to eq nil
+      record.name = 'b'
+      expect(record.name_previously_was).to eq nil
+      record.save!
+      expect(record.name_previously_was).to eq 'a'
+    end
+    it '*_was' do
+      record = klass.new
+      expect(record.name_was).to eq nil
+      record.name = 'a'
+      expect(record.name_was).to eq nil
+      record.save!
+      expect(record.name_was).to eq 'a'
+      record.name = 'b'
+      expect(record.name_was).to eq 'a'
+      record.save!
+      expect(record.name_was).to eq 'b'
+    end
+    it '*_will_change!' do
+      record = klass.new
+      expect(record.name_changed?).to eq false
+      expect(record.age_changed?).to eq false
+      expect(record.changed?).to eq false
+      record.name_will_change!
+      expect(record.name_changed?).to eq true
+      expect(record.age_changed?).to eq false
+      expect(record.changed?).to eq true
+    end
+    it '*_' do
+    end
+  end
 end
