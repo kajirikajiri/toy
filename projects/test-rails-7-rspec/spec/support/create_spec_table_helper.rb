@@ -1,4 +1,3 @@
-# 共通化できないんだけどなぜ
 # テスト用のテーブルを作成するためのヘルパーメソッド
 # https://qiita.com/teitei_tk/items/772856c981f295a3cfdf
 module CreateSpecTableHelper
