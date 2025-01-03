@@ -54,6 +54,9 @@
     - e1
     - e2
     - e3
-  - e1にe2をsquash merge
-  - e1にe3をrebase
-  - e3に入っているe2をskip
+  - 手順
+    - e1にe2をsquash merge
+    - e1にe3をrebase
+    - e3に入っているe2をskip
+  - 確認できなかった
+    - コンフリクトしなかった。実際にコンフリクトしたときに試す
