@@ -1,45 +1,57 @@
 import { Box, Button, Flex, Input, Stack, Text } from '@chakra-ui/react'
 import { useCallback } from 'react'
 import { useForm } from "react-hook-form"
+import * as changeCase from 'change-case'
+import * as spongeCase from 'sponge-case'
+import * as swapCase from 'swap-case'
+import * as titleCase from 'title-case'
 import './App.css'
 
 type FormValues = {
   value: string
 }
 
-const cases = ['camel', 'pascal', 'snake', 'snake-upper', 'kebab', 'kebab-upper', 'space', 'space-upper'] as const
+const cases = ['camel', 'pascal', 'snake', 'snake-upper', 'kebab', 'kebab-upper', 'space', 'space-upper', 'title', 'sponge', 'swap'] as const
 
 type Case = typeof cases[number]
 
 function App() {
-  const {register, watch } = useForm<FormValues>({
+  const { register, watch } = useForm<FormValues>({
     defaultValues: {
       value: ''
     }
   })
   const value = watch('value')
-  const convertCase = useCallback((caseType: Case) => {
+  const convertCase = useCallback((caseType: Case, value: string) => {
     switch (caseType) {
       case 'camel':
-        return value.replace(/([-_]\w)/g, g => g[1].toUpperCase()).replace(/^./, str => str.toLowerCase());
+        return changeCase.camelCase(value);
       case 'pascal':
-        return value.replace(/(?:^|[_-])(\w)/g, (_, c) => c.toUpperCase())
+        return changeCase.pascalCase(value);
       case 'snake':
-        return value.replace(/[A-Z]/g, '_$&').replace(/^_/, '').toLowerCase();
+        return changeCase.snakeCase(value);
       case 'snake-upper':
-        return value.replace(/[A-Z]/g, '_$&').replace(/^_/, '').toUpperCase()
+        return changeCase.snakeCase(value).toUpperCase();
       case 'kebab':
-        return value.replace(/[A-Z]/g, '-$&').replace(/^-/, '').toLowerCase()
+        return changeCase.kebabCase(value);
       case 'kebab-upper':
-        return value.replace(/[A-Z]/g, '-$&').replace(/^-/, '').toUpperCase()
+        return changeCase.kebabCase(value).toUpperCase();
       case 'space':
-        return value.replace(/[A-Z]/g, ' $&').replace(/^ /, '').toLowerCase()
+        return changeCase.noCase(value);
       case 'space-upper':
-        return value.replace(/[A-Z]/g, ' $&').replace(/^ /, '').toUpperCase()
-      default:
-        throw new Error('Invalid case')
+        return changeCase.noCase(value).toUpperCase();
+      case 'title':
+        return titleCase.titleCase(value);
+      case 'sponge':
+        return spongeCase.spongeCase(value);
+      case 'swap':
+        return swapCase.swapCase(value);
+      default: {
+        return caseType satisfies never
+      }
     }
-  }, [value])
+  }, [])
+
   const handleCopy = useCallback((text: string) => {
     navigator.clipboard.writeText(text)
   }, [])
@@ -50,8 +62,8 @@ function App() {
         <Input variant='subtle' {...register('value')} />
         {cases.map(caseType => (
           <Flex key={caseType} alignItems='center' gap={2}>
-            <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase(caseType))}>Copy</Button>
-            <Text>{convertCase(caseType)}</Text>
+            <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase(caseType, value))}>Copy</Button>
+            <Text>{convertCase(caseType, value)}</Text>
           </Flex>
         ))}
       </Stack>
