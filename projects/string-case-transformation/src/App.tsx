@@ -7,7 +7,9 @@ type FormValues = {
   value: string
 }
 
-type Case = 'camel' | 'pascal' | 'kebab' | 'kebab-upper' | 'snake' | 'snake-upper' | 'space' | 'space-upper'
+const cases = ['camel', 'pascal', 'snake', 'snake-upper', 'kebab', 'kebab-upper', 'space', 'space-upper'] as const
+
+type Case = typeof cases[number]
 
 function App() {
   const {register, watch } = useForm<FormValues>({
@@ -46,38 +48,12 @@ function App() {
     <Box display="flex" justifyContent="center" pt={10}>
       <Stack maxW={'1000px'} width="600px" px={20} gap={2}>
         <Input variant='subtle' {...register('value')} />
-        <Flex alignItems='center' gap={2}>
-          <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase('camel'))}>Copy</Button>
-          <Text>{convertCase('camel')}</Text>
-        </Flex>
-        <Flex alignItems='center' gap={2}>
-          <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase('pascal'))}>Copy</Button>
-          <Text>{convertCase('pascal')}</Text>
-        </Flex>
-        <Flex alignItems='center' gap={2}>
-          <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase('snake'))}>Copy</Button>
-          <Text>{convertCase('snake')}</Text>
-        </Flex>
-        <Flex alignItems='center' gap={2}>
-          <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase('snake-upper'))}>Copy</Button>
-          <Text>{convertCase('snake-upper')}</Text>
-        </Flex>
-        <Flex alignItems='center' gap={2}>
-          <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase('kebab'))}>Copy</Button>
-          <Text>{convertCase('kebab')}</Text>
-        </Flex>
-        <Flex alignItems='center' gap={2}>
-          <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase('kebab-upper'))}>Copy</Button>
-          <Text>{convertCase('kebab-upper')}</Text>
-        </Flex>
-        <Flex alignItems='center' gap={2}>
-          <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase('space'))}>Copy</Button>
-          <Text>{convertCase('space')}</Text>
-        </Flex>
-        <Flex alignItems='center' gap={2}>
-          <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase('space-upper'))}>Copy</Button>
-          <Text>{convertCase('space-upper')}</Text>
-        </Flex>
+        {cases.map(caseType => (
+          <Flex key={caseType} alignItems='center' gap={2}>
+            <Button variant='surface' size="xs" onClick={() => handleCopy(convertCase(caseType))}>Copy</Button>
+            <Text>{convertCase(caseType)}</Text>
+          </Flex>
+        ))}
       </Stack>
     </Box>
   )
