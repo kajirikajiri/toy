@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    command: bin/rails s -b 0.0.0.0
+    volumes:
+      - .:/rails
+      - bundle_cache:/usr/local/bundle
+    ports:
+      - "3000:3000"
+
+volumes:
+  bundle_cache:

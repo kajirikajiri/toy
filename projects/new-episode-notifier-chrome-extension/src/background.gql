@@ -1,0 +1,5 @@
+query background_listScrapes {
+  listScrapes {
+    id
+  }
+}
