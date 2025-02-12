@@ -41,7 +41,8 @@ export default defineConfig({
         version: "1.0.0",
         action: { "default_popup": "index.html" },
         background: { service_worker: "src/background.ts", type: 'module' },
-        host_permissions: ["<all_urls>"]
+        host_permissions: ["<all_urls>"],
+        permissions: ["alarms"]
     } }),
   ],
 })

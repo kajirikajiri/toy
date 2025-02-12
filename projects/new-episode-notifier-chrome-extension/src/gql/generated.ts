@@ -7,7 +7,7 @@ export type Background_ListScrapesQueryVariables = Exact<{ [key: string]: never;
 export type Background_ListScrapesQuery = { __typename?: 'Query', listScrapes: Array<{ __typename?: 'Scrape', id: string }> };
 
 
-export const Background_ListScrapesGeneratedDocument = gql`
+export const Background_ListScrapesDocument = gql`
     query background_listScrapes {
   listScrapes {
     id
@@ -32,15 +32,15 @@ export const Background_ListScrapesGeneratedDocument = gql`
  */
 export function useBackground_ListScrapesQuery(baseOptions?: Apollo.QueryHookOptions<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>(Background_ListScrapesGeneratedDocument, options);
+        return Apollo.useQuery<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>(Background_ListScrapesDocument, options);
       }
 export function useBackground_ListScrapesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>(Background_ListScrapesGeneratedDocument, options);
+          return Apollo.useLazyQuery<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>(Background_ListScrapesDocument, options);
         }
 export function useBackground_ListScrapesSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>(Background_ListScrapesGeneratedDocument, options);
+          return Apollo.useSuspenseQuery<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>(Background_ListScrapesDocument, options);
         }
 export type Background_ListScrapesQueryHookResult = ReturnType<typeof useBackground_ListScrapesQuery>;
 export type Background_ListScrapesLazyQueryHookResult = ReturnType<typeof useBackground_ListScrapesLazyQuery>;
