@@ -9,8 +9,7 @@
 # Table name: scrapes
 #
 #  id          :string           not null, primary key
-#  executed_at :date
-#  raw_dom     :text
+#  executed_at :datetime
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  video_id    :string           not null

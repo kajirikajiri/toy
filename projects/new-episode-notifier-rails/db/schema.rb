@@ -12,8 +12,7 @@
 
 ActiveRecord::Schema[8.0].define(version: 2025_02_11_020049) do
   create_table "scrapes", id: :string, force: :cascade do |t|
-    t.date "executed_at"
-    t.text "raw_dom"
+    t.datetime "executed_at"
     t.string "video_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

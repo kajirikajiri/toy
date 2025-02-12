@@ -3,6 +3,5 @@ class Types::ScrapeType < Types::BaseObject
 
   field :id, ID, null: false
   field :executed_at, String
-  field :raw_dom, String
   field :url, String, null: false, method: :url
 end

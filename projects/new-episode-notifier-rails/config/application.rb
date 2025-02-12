@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module NewEpisodeNotifier
   class Application < Rails::Application
+    config.time_zone = 'Tokyo'
     config.active_record.query_log_tags_enabled = true
     config.active_record.query_log_tags = [
       # Rails query log tags:

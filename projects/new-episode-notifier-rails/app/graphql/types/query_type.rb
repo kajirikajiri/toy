@@ -2,6 +2,6 @@
 
 module Types
   class QueryType < Types::BaseObject
-    field :list_scrapes, resolver: Resolvers::ListScrapeResolver
+    field :get_unscraped_item, resolver: Resolvers::GetUnscrapedItemResolver
   end
 end

@@ -1,36 +1,12 @@
-import { DocumentNode } from "graphql"
-import { Background_ListScrapesDocument, Background_ListScrapesQuery, Background_ListScrapesQueryResult, Background_ListScrapesQueryVariables } from "./gql/generated"
-import { OperationVariables, QueryResult, TypedDocumentNode } from "@apollo/client"
+import { GraphQLClient } from "graphql-request";
+import { getSdk } from "./gql/generated"
 
-const extractRequestBodyFromDocument = (document: DocumentNode) => {
-    const operationName = (document.definitions.at(0) as ({name?: {value?: string}} | undefined))?.name?.value
-    const query = document.loc?.source.body
-    if (!operationName || !query) {
-        throw new Error("Document is missing operationName or query")
-    }
-    return {
-        operationName,
-        query,
-    }
-}
+const defaultClient = new GraphQLClient('http://localhost:3000/graphql')
+export const sdk = getSdk(defaultClient)
 
-const gqlRequest =  async <
-  TData = any, // eslint-disable-line @typescript-eslint/no-explicit-any
-  TVariables extends OperationVariables = OperationVariables>(query: DocumentNode | TypedDocumentNode<TData, OperationVariables>): Promise<QueryResult<TData, TVariables>> => { 
-    const r = await fetch("http://localhost:3000/graphql", {
-    method: "POST",
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(extractRequestBodyFromDocument(query)),
-    })
-    const json = await r.json()
-    return json
-}
-
-(async ()=>{
-    const r = await gqlRequest<Background_ListScrapesQuery, Background_ListScrapesQueryVariables>(Background_ListScrapesDocument)
-    console.log(await r)
+;(async ()=>{
+    const {getUnscrapedItem: scrape} = await sdk.background_getUnscrapedItem()
+    console.log(scrape)
 })()
 
 type AlarmName = "periodic-scrape"
@@ -55,13 +31,63 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
 })
 
 const periodicScrape = async () => {
-    const r = await gqlRequest(Background_ListScrapesDocument);
-    console.log(await r.json());
-}
+    const {getUnscrapedItem: scrape} =await sdk.background_getUnscrapedItem()
+    if (!scrape) {
+        console.debug("スクレイプするアイテムがありません")
+        return
+    }
+    let tabId: number | undefined = undefined
+    try {
+      tabId = (await chrome.tabs.create({ url: scrape.url })).id
+      if (typeof tabId !== "number") {
+        console.debug("タブが作成できませんでした");
+        return;
+      }
+      
+      const isTabLoaded = await new Promise((resolve) => {
+          setTimeout(() => {
+                resolve(false)
+          }, 3000)
+        chrome.tabs.onUpdated.addListener(function listener(updatedTabId, changeInfo) {
+          if (updatedTabId === tabId && changeInfo.status === "complete") {
+            chrome.tabs.onUpdated.removeListener(listener);
+            resolve(true);
+          }
+        });
+      })
+      
+      if (!isTabLoaded) {
+        console.debug("タブの読み込みが完了しませんでした")
+        return
+      }
 
-const a: Background_ListScrapesQueryResult = {
-    data: {
-        listScrapes: [{}]
+      const [{ result: episodeCount }] = await chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        args: [],
+        func: () => {
+          return document.querySelectorAll(
+            "#tab-content-episodes [data-testid=download-button-IDLE]"
+          ).length;
+        },
+      });
+      if (episodeCount === undefined) {
+        console.debug("エピソードが見つかりませんでした");
+        return;
+      }
+
+      await sdk.background_updateScrapedData({
+        input: {
+          id: scrape.id,
+          episodeCount,
+        },
+      });
+    } finally {
+      if (tabId) {
+          try {
+              await chrome.tabs.remove(tabId);
+          } catch (e) {
+              console.error("タブを閉じることができませんでした", e);
+            }
+      }
     }
 }
-
