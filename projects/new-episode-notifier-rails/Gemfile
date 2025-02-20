@@ -53,3 +53,7 @@ gem "graphiql-rails", group: :development
 
 
 gem "propshaft", "~> 1.1"
+
+gem "slack-ruby-client", "~> 2.5"
+
+gem "dotenv-rails", "~> 3.1"

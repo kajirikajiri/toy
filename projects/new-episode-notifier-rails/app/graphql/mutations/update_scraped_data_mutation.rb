@@ -10,9 +10,7 @@ module Mutations
       video = scrape.video
       
       # 引数のepisode_countが現在のepisode_countより小さい場合はエラーを返す
-      raise ArgumentError, "エピソード数が現在のエピソード数より少ないです" if video.episode_count > params[:episode_count]
-      # 引数のepisode_countが0以下の場合はエラーを返す
-      raise ArgumentError, "エピソード数は0以上で指定してください" unless params[:episode_count].positive?
+      raise ArgumentError, "エピソード数が現在のエピソード数より少ないです #{video.episode_count} > #{params[:episode_count]}" if (video.episode_count || 0) > params[:episode_count]
       
       ActiveRecord::Base.transaction do
         scrape.update!( executed_at: Time.current)

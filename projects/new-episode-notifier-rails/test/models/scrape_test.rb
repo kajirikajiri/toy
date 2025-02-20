@@ -1,3 +1,11 @@
+require "test_helper"
+
+class ScrapeTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end
+
 # == Schema Information
 #
 # Table name: scrapes
@@ -16,10 +24,3 @@
 #
 #  video_id  (video_id => videos.id)
 #
-require "test_helper"
-
-class ScrapeTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-end

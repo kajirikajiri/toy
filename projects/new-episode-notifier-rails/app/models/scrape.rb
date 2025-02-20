@@ -1,3 +1,8 @@
+class Scrape < ApplicationRecord
+  belongs_to :video
+  delegate :url, to: :video
+end
+
 # == Schema Information
 #
 # Table name: scrapes
@@ -16,7 +21,3 @@
 #
 #  video_id  (video_id => videos.id)
 #
-class Scrape < ApplicationRecord
-  belongs_to :video
-  delegate :url, to: :video
-end

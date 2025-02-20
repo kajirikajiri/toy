@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_11_020049) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_20_121018) do
   create_table "scrapes", id: :string, force: :cascade do |t|
     t.datetime "executed_at"
     t.string "video_id", null: false
@@ -19,11 +19,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_11_020049) do
     t.index ["video_id"], name: "index_scrapes_on_video_id"
   end
 
+  create_table "slack_messages", id: :string, force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.string "channel", null: false
+    t.string "ts"
+    t.string "text"
+    t.text "response"
+    t.string "thread_ts"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "videos", id: :string, force: :cascade do |t|
     t.string "url", null: false
     t.integer "episode_count"
+    t.string "title", null: false
+    t.integer "season", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title", "season"], name: "index_videos_on_title_and_season", unique: true
     t.index ["url"], name: "index_videos_on_url", unique: true
   end
 

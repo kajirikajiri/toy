@@ -12,19 +12,15 @@ two: {}
 
 # == Schema Information
 #
-# Table name: scrapes
+# Table name: slack_messages
 #
-#  id          :string           not null, primary key
-#  executed_at :datetime
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  video_id    :string           not null
-#
-# Indexes
-#
-#  index_scrapes_on_video_id  (video_id)
-#
-# Foreign Keys
-#
-#  video_id  (video_id => videos.id)
+#  id         :string           not null, primary key
+#  channel    :string           not null
+#  response   :text
+#  status     :integer          default("pending"), not null
+#  text       :string
+#  thread_ts  :string
+#  ts         :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
