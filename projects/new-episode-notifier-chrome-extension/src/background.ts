@@ -1,13 +1,8 @@
 import { GraphQLClient } from "graphql-request";
 import { getSdk } from "./gql/generated"
 
-const defaultClient = new GraphQLClient('http://localhost:3000/graphql')
+const defaultClient = new GraphQLClient('http://localhost:3333/graphql')
 export const sdk = getSdk(defaultClient)
-
-;(async ()=>{
-    const {getUnscrapedItem: scrape} = await sdk.background_getUnscrapedItem()
-    console.log(scrape)
-})()
 
 type AlarmName = "periodic-scrape"
 
