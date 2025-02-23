@@ -1,26 +1,52 @@
 require 'open3'
 require 'dotenv/load'
 require 'json'
-
+require 'singleton'
+  
 class Gh
   def initialize
-    # .envからTARGET_REPOを取得
-    # リポジトリオーナー
-    @owner = ENV.fetch('OWNER')
-    # リポジトリ名
-    @repo = ENV.fetch('REPO')
-    # コメントを取得したいユーザーのID
-    @target_user = ENV.fetch('TARGET_USER')
+    @owner = ENV.fetch('OWNER') # リポジトリオーナー
+    @repo = ENV.fetch('REPO') # リポジトリ名
+    @target_user = ENV.fetch('TARGET_USER') # コメントを取得したいユーザーのID
   end
-
-  def fetch_pr_comments
-    prs = fetch_prs
-    text = extract_pr_comments_text(prs)
-    puts text
+  
+  def show_pr_comments
+    # commentsを整形するlambda
+    format_comment = ->(comment) do
+      <<~REVIEW
+        #{comment.dig('url')}
+        #{comment.dig('body')}
+        ================================
+      REVIEW
+    end
+  
+    puts fetch_pr_review_comments.map(&format_comment).join("\n")
+  end
+  
+  def show_rate_limit
+    # rate_limitを取得するghコマンド
+    gh_rate_limit = "gh api rate_limit"
+  
+    # used/limitで最も利用しているものからorderして、リセットまでの時間を表示
+    rate_limit_logs = []
+    JSON.parse(execute_command(gh_rate_limit)).dig('resources').map do |k, v|
+      [k, v['used'], v['limit'], v['reset']]
+    end.sort_by do |v|
+      v[1].to_f / v[2].to_f
+    end.select do
+      |v| v[1] > 0
+    end.reverse.map do |v|
+      rate_limit_logs << "#{v[0]}: #{Time.at(v[3]).strftime('%Y-%m-%d %H:%M:%S')}, 使用状況: #{v[1]}/#{v[2]}"
+    end
+    if rate_limit_logs.empty?
+      puts "APIを全く利用していません。"
+    else
+      puts rate_limit_logs.join("\n")
+    end
   end
   
   private
-  
+
   def execute_command(command)
     stdout, stderr, status = Open3.capture3(command)
     raise "Error: #{stderr}" unless status.success?
@@ -28,29 +54,22 @@ class Gh
     stdout
   end
   
-  # 100件以上のデータを取得したい場合は、gh api graphqlに--paginateをつけて、startCursorを使って取得する。endCursorとbeforeはつかえない。
-  # https://cli.github.com/manual/gh_api
-  def fetch_prs
-    prs = []
-    start_cursor = ""
-    try = 0
-    5.times do
-      try += 1
-      command = <<~COMMAND
+  # 特定の人がレビューしたPRの番号を作成の降順(?)で取得する
+  def fetch_pr_review_comments
+    comments = []
+    100.times do |i|
+      end_cursor = ''
+      gh_pr_id = <<~GH
         gh api graphql \
           --paginate \
-          -F owner=#{@owner} \
-          -F repo=#{@repo} \
-          -F after=#{start_cursor} \
           -f query='
-            query(#{start_cursor.empty? ? '' : '$after: String'}, $owner: String!, $repo: String!) {
-              repository(owner: $owner, name: $repo) {
-                pullRequests(#{start_cursor.empty? ? 'first: 40' : 'first: 40, after: $after'},states: [OPEN, CLOSED]) {
-                  pageInfo {
-                    startCursor
-                    hasNextPage
-                  }
-                  nodes {
+            query {
+              search(#{end_cursor.empty? ? '' : "after: #{end_cursor}, "}type: ISSUE, query: "is:pr reviewed-by:#{@target_user} repo:#{@owner}/#{@repo} sort:created", first: 40) {
+                pageInfo {
+                  endCursor
+                }
+                nodes {
+                  ... on PullRequest {
                     reviewThreads(first: 100) {
                       nodes {
                         comments(first: 100) {
@@ -67,45 +86,26 @@ class Gh
                   }
                 }
               }
-            }'
-      COMMAND
-      tmp = JSON.parse(execute_command(command)).dig('data', 'repository', 'pullRequests')
-      nodes = tmp.dig('nodes')
-      has_next_page = tmp.dig('pageInfo', 'hasNextPage')
-      raise 'No nodes' if nodes.empty?
-
-      prs += nodes
-      start_cursor = tmp.dig('pageInfo', 'startCursor')
-      return prs unless has_next_page
-      try = 0
-      puts "PRを取得中... #{prs.length}件"
-    rescue RuntimeError => e
-      if try < 3 && e.message == 'No nodes'
-        sleep 1
-        retry
-      end
-      puts prs.length
-      raise 'Max retry'
+            }
+          '
+      GH
+      res = JSON.parse(execute_command(gh_pr_id)).dig('data', 'search')
+      end_cursor = res.dig('pageInfo', 'endCursor')
+      comments += res.dig('nodes').flat_map { |node| node.dig('reviewThreads', 'nodes') }.flat_map { |node| node.dig('comments', 'nodes') }.flatten
+      puts "コメント取得中...#{i + 1}回目: #{comments.size}件"
     end
-    prs
-  end
-  
-  def extract_pr_comments_text(prs)
-    text = ""
-    prs.each do |pr|
-      comments = pr.dig('reviewThreads', 'nodes').flat_map { |review_thread| review_thread.dig('comments', 'nodes') }
-        .select { |comment| comment.dig('author', 'login') == @target_user }
-      comments.each_with_index do |comment, index|
-        text << <<~REVIEW
-          #{comment.dig('url')}
-          #{comment.dig('body')}
-          #{comments.size - 1 == index ? '================================' : ''}
-        REVIEW
-      end
-    end
-    text
+    comments
   end
 end
 
-gh = Gh.new
-gh.fetch_pr_comments
+# コマンドライン引数を受け取る
+# ARGV[0]がrate_limitの場合はAPI制限を取得
+# ARGV[0]がprの場合はPRのコメントを取得
+
+if ARGV[0] == 'rate_limit'
+  Gh.new.show_rate_limit
+elsif ARGV[0] == 'pr'
+  Gh.new.show_pr_comments
+else
+  raise "引数が不正です。rate_limitかprを指定してください。"
+end
