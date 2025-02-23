@@ -54,6 +54,7 @@ class Gh
     stdout
   end
   
+  # NOTE: endCursorうまくうごいてないかも？
   # 特定の人がレビューしたPRの番号を作成の降順(?)で取得する
   def fetch_pr_review_comments
     comments = []
