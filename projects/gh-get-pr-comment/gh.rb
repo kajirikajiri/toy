@@ -54,18 +54,17 @@ class Gh
     stdout
   end
   
-  # NOTE: endCursorうまくうごいてないかも？
   # 特定の人がレビューしたPRの番号を作成の降順(?)で取得する
   def fetch_pr_review_comments
     comments = []
+    end_cursor = ''
     100.times do |i|
-      end_cursor = ''
       gh_pr_id = <<~GH
         gh api graphql \
           --paginate \
           -f query='
             query {
-              search(#{end_cursor.empty? ? '' : "after: #{end_cursor}, "}type: ISSUE, query: "is:pr reviewed-by:#{@target_user} repo:#{@owner}/#{@repo} sort:created", first: 40) {
+              search(#{end_cursor.empty? ? '' : "after: \"#{end_cursor}\", "}type: ISSUE, query: "is:pr reviewed-by:#{@target_user} repo:#{@owner}/#{@repo} sort:created", first: 40) {
                 pageInfo {
                   endCursor
                 }
