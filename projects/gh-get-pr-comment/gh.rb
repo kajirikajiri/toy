@@ -11,16 +11,18 @@ class Gh
   end
   
   def show_pr_comments
-    # commentsを整形するlambda
+    # commentsを整形するlambda。notionへ貼り付けて使うことを想定している。
     format_comment = ->(comment) do
       <<~REVIEW
-        #{comment.dig('url')}
+        [link](#{comment.dig('url')})
+
         #{comment.dig('body')}
-        ================================
+
+        . . . . . . . . . . . . . . . . .
       REVIEW
     end
   
-    puts fetch_pr_review_comments.map(&format_comment).join("\n")
+    puts fetch_pr_review_comments.map(&format_comment).join
   end
   
   def show_rate_limit
@@ -28,16 +30,13 @@ class Gh
     gh_rate_limit = "gh api rate_limit"
   
     # used/limitで最も利用しているものからorderして、リセットまでの時間を表示
-    rate_limit_logs = []
-    JSON.parse(execute_command(gh_rate_limit)).dig('resources').map do |k, v|
-      [k, v['used'], v['limit'], v['reset']]
-    end.sort_by do |v|
-      v[1].to_f / v[2].to_f
-    end.select do
-      |v| v[1] > 0
-    end.reverse.map do |v|
-      rate_limit_logs << "#{v[0]}: #{Time.at(v[3]).strftime('%Y-%m-%d %H:%M:%S')}, 使用状況: #{v[1]}/#{v[2]}"
-    end
+    # NOTE: 一応、dig('resources')と並列にもう一個keyが残っているが、使ってない
+    rate_limit_logs =
+      JSON.parse(execute_command(gh_rate_limit)).
+        dig('resources').sort_by { |k, v| v['used'].to_f / v['limit'].to_f }.
+        select { |v| puts v; v[1]['used'] > 0 }.
+        reverse.
+        map { |v| "#{v[0]}: #{Time.at(v[1]['reset']).strftime('%Y-%m-%d %H:%M:%S')}, 使用状況: #{v[1]['used']}/#{v[1]['limit']}" }
     if rate_limit_logs.empty?
       puts "APIを全く利用していません。"
     else
@@ -55,20 +54,12 @@ class Gh
   end
   
   # 特定の人がレビューしたPRの番号を作成の降順(?)で取得する
-  # 17回目まで成功した。そこでエラー発生
-  # gh.rb:67:in `block in fetch_pr_review_comments': undefined method `empty?' for nil:NilClass (NoMethodError)
-  # 
-  # search(#{end_cursor.empty? ? '' : "after: \\"#{end_cursor}\\", "}type: ISSUE, query: "is:pr reviewed-by:#{@target_user} repo:#{@owner}/#{@repo} sort:created", first: 40) {
-  #                    ^^^^^^^
-  # from gh.rb:61:in `times'
-  # from gh.rb:61:in `fetch_pr_review_comments'
-  # from gh.rb:23:in `show_pr_comments'
-  # from gh.rb:108:in `<main>'
+  # WARN: pageInfoにhasNextPageを入れるとレスポンスが来ないので、endCursorがnilになるまで繰り返す
   def fetch_pr_review_comments
     comments = []
     end_cursor = ''
     100.times do |i|
-      gh_pr_id = <<~GH
+      gh_pr_comments = <<~GH
         gh api graphql \
           --paginate \
           -f query='
@@ -98,10 +89,17 @@ class Gh
             }
           '
       GH
-      res = JSON.parse(execute_command(gh_pr_id)).dig('data', 'search')
+      res = JSON.parse(execute_command(gh_pr_comments)).dig('data', 'search')
       end_cursor = res.dig('pageInfo', 'endCursor')
-      comments += res.dig('nodes').flat_map { |node| node.dig('reviewThreads', 'nodes') }.flat_map { |node| node.dig('comments', 'nodes') }.flatten
+      comments +=
+        res.dig('nodes').
+          flat_map { |node| node.dig('reviewThreads', 'nodes') }.
+          flat_map { |node| node.dig('comments', 'nodes') }.
+          flatten.
+          select { |comment| comment.dig('author', 'login') == @target_user }
       puts "コメント取得中...#{i + 1}回目: #{comments.size}件"
+      
+      break if end_cursor.nil?
     end
     comments
   end
