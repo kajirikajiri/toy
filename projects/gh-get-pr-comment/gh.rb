@@ -55,6 +55,15 @@ class Gh
   end
   
   # 特定の人がレビューしたPRの番号を作成の降順(?)で取得する
+  # 17回目まで成功した。そこでエラー発生
+  # gh.rb:67:in `block in fetch_pr_review_comments': undefined method `empty?' for nil:NilClass (NoMethodError)
+  # 
+  # search(#{end_cursor.empty? ? '' : "after: \\"#{end_cursor}\\", "}type: ISSUE, query: "is:pr reviewed-by:#{@target_user} repo:#{@owner}/#{@repo} sort:created", first: 40) {
+  #                    ^^^^^^^
+  # from gh.rb:61:in `times'
+  # from gh.rb:61:in `fetch_pr_review_comments'
+  # from gh.rb:23:in `show_pr_comments'
+  # from gh.rb:108:in `<main>'
   def fetch_pr_review_comments
     comments = []
     end_cursor = ''
