@@ -11,6 +11,10 @@ export default defineConfig({
   legacy: {
     skipWebSocketTokenCheck: true,
   },
+  server: {
+    port: 5168,
+    strictPort: true,
+  },
   plugins: [
     react(),
     crx({ manifest: {
