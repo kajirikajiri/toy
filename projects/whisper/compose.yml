@@ -5,6 +5,8 @@ services:
     build: .
     ports:
       - "4673:4673"
+    volumes:
+      - .:/app             # ホストの現在のディレクトリを /app にマウント
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4673/health"]
       interval: 30s
