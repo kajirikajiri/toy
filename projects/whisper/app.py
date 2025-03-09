@@ -46,6 +46,12 @@ def transcribe_audio():
             torch_dtype=torch_dtype,
             device=device,
         )
+        # prompt = """
+        # NeoVim,VSCode
+        # """
+        # prompt_ids = processor.get_prompt_ids(prompt, return_tensors="pt").to(device)
+        # result = pipe(file_path, generate_kwargs={"prompt_ids": prompt_ids})
+        # result = pipe(file_path, generate_kwargs={"language": "japanese"})
         result = pipe(file_path)
         os.remove(file_path)
         return jsonify({"transcription": result['text']}), 200
