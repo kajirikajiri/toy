@@ -6,7 +6,7 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module NewEpisodeNotifier
+module PeriodicExecutor
   class Application < Rails::Application
     config.time_zone = 'Tokyo'
     config.active_record.query_log_tags_enabled = true

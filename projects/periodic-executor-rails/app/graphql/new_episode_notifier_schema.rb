@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class NewEpisodeNotifierSchema < GraphQL::Schema
+class PeriodicExecutorSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 
