@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_12_132651) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_15_135454) do
   create_table "actions", id: :string, force: :cascade do |t|
     t.string "name", null: false
-    t.text "steps", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,6 +36,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_12_132651) do
     t.datetime "updated_at", null: false
   end
 
+# Could not dump table "steps" because of following StandardError
+#   Unknown type 'uuid' for column 'action_id'
+
+
   create_table "videos", id: :string, force: :cascade do |t|
     t.string "url", null: false
     t.integer "episode_count"
@@ -49,4 +52,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_12_132651) do
   end
 
   add_foreign_key "scrapes", "videos"
+  add_foreign_key "steps", "actions"
 end

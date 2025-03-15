@@ -1,6 +1,6 @@
 class Action < ApplicationRecord
   include Validator
-
+  has_many :steps, dependent: :destroy
 end
 
 # == Schema Information
@@ -9,7 +9,6 @@ end
 #
 #  id         :string           not null, primary key
 #  name       :string           not null
-#  steps      :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
