@@ -31,13 +31,27 @@ module Step::Validator
             waitLoadedMs: { type: 'integer' }
           },
         }
-      when 'trim_text'
+      when 'trim_output'
         {
           type: 'object',
           properties: {
-            replaced: { type: 'string' },
-            pattern: { type: 'string' },
+            replaced_target_step_id: { type: 'string' },
+            pattern: { type: 'string' }, # regexp
             replacement: { type: 'string' },
+          },
+        }
+      when 'logging_output'
+        {
+          type: 'object',
+          properties: {
+            message_target_step_id: { type: 'string' },
+          },
+        }
+      when 'logging_string'
+        {
+          type: 'object',
+          properties: {
+            message: { type: 'string' },
           },
         }
       else

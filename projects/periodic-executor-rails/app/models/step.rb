@@ -3,11 +3,18 @@ class Step < ApplicationRecord
 
   belongs_to :action
   enum :pattern, {
-    get_count: 0,
-    get_inner_text: 1,
-    create_tab: 2,
-    trim_text: 3
+    get_count: 0, # 要素の数を取得
+    get_inner_text: 1, # 要素のテキストを取得
+    create_tab: 2, # ブラウザタブを作成
+    trim_output: 3, # 他stepの出力をトリミング
+    logging_output: 4, # 他stepの出力をログに出力
+    logging_string: 5, # 文字列をログに出力
   }
+
+  # hashならjsonに変換してセット
+  def args=(value)
+    super(value.is_a?(Hash) ? value.to_json : value)
+  end
 end
 
 # == Schema Information
