@@ -3,8 +3,6 @@ class Video < ApplicationRecord
 
   after_create Callback
   after_update Callback
-
-  has_many :scrapes, dependent: :destroy
 end
 
 # == Schema Information

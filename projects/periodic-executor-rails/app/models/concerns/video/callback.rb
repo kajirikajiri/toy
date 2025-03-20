@@ -9,12 +9,7 @@ class Video::Callback
     def after_update(video)
       after_update_incremented_episode_count_send_notification(video)
     end
-    
-    # videoを作成したら、初回のスクレイピングを実行するためにScrapeを作成する
-    def after_create_create_scrape(video)
-      Scrape.create!(video:)
-    end
-    
+
     # video更新時、episode_countが増えた場合にSlackに通知する
     def after_update_incremented_episode_count_send_notification(video)
       # episode_countが増えていない場合は何もしない

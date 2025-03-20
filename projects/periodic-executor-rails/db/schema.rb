@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_15_135454) do
-  create_table "actions", id: :string, force: :cascade do |t|
-    t.string "name", null: false
+ActiveRecord::Schema[8.0].define(version: 2025_03_20_134914) do
+  create_table "action_results", id: :string, force: :cascade do |t|
+    t.boolean "success", default: false, null: false
+    t.text "steps", null: false
+    t.integer "action_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["action_id"], name: "index_action_results_on_action_id"
   end
 
-  create_table "scrapes", id: :string, force: :cascade do |t|
-    t.datetime "executed_at"
-    t.string "video_id", null: false
+  create_table "actions", id: :string, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["video_id"], name: "index_scrapes_on_video_id"
+    t.integer "pattern", default: 0, null: false
   end
 
   create_table "slack_messages", id: :string, force: :cascade do |t|
@@ -51,6 +52,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_15_135454) do
     t.index ["url"], name: "index_videos_on_url", unique: true
   end
 
-  add_foreign_key "scrapes", "videos"
+  add_foreign_key "action_results", "actions"
   add_foreign_key "steps", "actions"
 end

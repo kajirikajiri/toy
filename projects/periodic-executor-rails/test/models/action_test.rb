@@ -11,7 +11,7 @@ end
 # Table name: actions
 #
 #  id         :string           not null, primary key
-#  name       :string           not null
+#  pattern    :integer          default("update_video_episode_count"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

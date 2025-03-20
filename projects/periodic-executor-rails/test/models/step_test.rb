@@ -12,6 +12,7 @@ end
 #
 #  id         :string           not null, primary key
 #  args       :text             not null
+#  order      :integer          default(0), not null
 #  pattern    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -19,7 +20,8 @@ end
 #
 # Indexes
 #
-#  index_steps_on_action_id  (action_id)
+#  index_steps_on_action_id            (action_id)
+#  index_steps_on_action_id_and_order  (action_id,order) UNIQUE
 #
 # Foreign Keys
 #

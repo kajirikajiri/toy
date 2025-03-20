@@ -9,6 +9,7 @@ class Step < ApplicationRecord
     trim_output: 3, # 他stepの出力をトリミング
     logging_output: 4, # 他stepの出力をログに出力
     logging_string: 5, # 文字列をログに出力
+    update_video_episode_count: 6, # エピソード数を更新
   }
 
   # hashならjsonに変換してセット
@@ -23,6 +24,7 @@ end
 #
 #  id         :string           not null, primary key
 #  args       :text             not null
+#  order      :integer          default(0), not null
 #  pattern    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -30,7 +32,8 @@ end
 #
 # Indexes
 #
-#  index_steps_on_action_id  (action_id)
+#  index_steps_on_action_id            (action_id)
+#  index_steps_on_action_id_and_order  (action_id,order) UNIQUE
 #
 # Foreign Keys
 #

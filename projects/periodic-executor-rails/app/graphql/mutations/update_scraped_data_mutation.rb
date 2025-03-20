@@ -1,9 +1,10 @@
 module Mutations
-  class UpdateScrapedDataMutation < BaseMutation
+  class UpdateActionFormMutation < BaseMutation
     argument :id, ID, required: true
     argument :episode_count, Integer, required: true
 
     field :scrape, Types::ScrapeType, null: false
+    field :video, Types::VideoType, null: false
 
     def resolve(**params)
       scrape = Scrape.find(params[:id])
