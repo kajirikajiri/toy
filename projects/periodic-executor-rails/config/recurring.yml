@@ -1,9 +1,5 @@
 development:
   periodic_registration_scrape:
-    class: CreateScrapesJob
-    queue: background
-    schedule: every day at 0am
-  periodic_remove_unexecuted_scrapes:
-    class: RemoveUnexecutedScrapesJob
+    class: CreateActionsJob
     queue: background
     schedule: every day at 0am

@@ -10,20 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_20_134914) do
-  create_table "action_results", id: :string, force: :cascade do |t|
-    t.boolean "success", default: false, null: false
-    t.text "steps", null: false
-    t.integer "action_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["action_id"], name: "index_action_results_on_action_id"
-  end
-
+ActiveRecord::Schema[8.0].define(version: 2025_03_22_110136) do
   create_table "actions", id: :string, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "pattern", default: 0, null: false
+    t.string "executable_type", null: false
+    t.string "executable_id", null: false
+    t.datetime "completed_at"
+    t.integer "status", default: 0, null: false
+    t.text "logs"
   end
 
   create_table "slack_messages", id: :string, force: :cascade do |t|
@@ -37,10 +33,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_134914) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "steps" because of following StandardError
-#   Unknown type 'uuid' for column 'action_id'
-
-
   create_table "videos", id: :string, force: :cascade do |t|
     t.string "url", null: false
     t.integer "episode_count"
@@ -51,7 +43,4 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_134914) do
     t.index ["title", "season"], name: "index_videos_on_title_and_season", unique: true
     t.index ["url"], name: "index_videos_on_url", unique: true
   end
-
-  add_foreign_key "action_results", "actions"
-  add_foreign_key "steps", "actions"
 end

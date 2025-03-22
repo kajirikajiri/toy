@@ -1,8 +1,6 @@
 class SlackMessage < ApplicationRecord
   include Validator
 
-  after_commit Callback
-
   CHANNELS = {
     chrome_bot: ENV.fetch('SLACK_CHANNEL_ID_CHROME_BOT'),
   }

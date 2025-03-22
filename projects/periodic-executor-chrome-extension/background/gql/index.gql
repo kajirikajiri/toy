@@ -1,0 +1,26 @@
+query background_getUnexecutedAction {
+  getUnexecutedAction {
+    id
+    executable {
+        ... on Video {
+            id
+            url
+        }
+    }
+  }
+}
+
+mutation background_updateVideoEpisodeCountMutation(
+  $input: UpdateVideoEpisodeCountMutationInput!
+) {
+  updateVideoEpisodeCount(input: $input) {
+    action {
+      id
+      executable {
+        ... on Video {
+            id
+        }
+      }
+    }
+  }
+}

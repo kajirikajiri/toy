@@ -2,6 +2,6 @@
 
 module Types
   class QueryType < Types::BaseObject
-    field :get_unscraped_item, resolver: Resolvers::GetUnscrapedItemResolver
+    field :get_unexecuted_action, resolver: Resolvers::GetUnexecutedActionResolver
   end
 end

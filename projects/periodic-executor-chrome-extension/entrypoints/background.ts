@@ -1,5 +1,5 @@
 import { GraphQLClient } from "graphql-request";
-import { getSdk } from "../background/gql/generated";
+import { getSdk } from "../generated"
 
 const defaultClient = new GraphQLClient("http://localhost:3333/graphql");
 export const sdk = getSdk(defaultClient);
@@ -25,16 +25,22 @@ export default defineBackground(() => {
   });
 
   const periodicScrape = async () => {
-    const { getUnscrapedItem: scrape } =
-      await sdk.background_getUnscrapedItem();
-    if (!scrape) {
+    const { getUnexecutedAction: action } =
+      await sdk.background_getUnexecutedAction();
+    if (!action) {
       console.debug("スクレイプするアイテムがありません");
       return;
     }
     let tabId: number | undefined = undefined;
     try {
-      tabId = (await chrome.tabs.create({ url: scrape.url })).id;
+      tabId = (await chrome.tabs.create({ url: action.executable.url })).id;
       if (typeof tabId !== "number") {
+        await sdk.background_updateVideoEpisodeCountMutation({
+          input: {
+            id: action.id,
+            log: { message: "タブが作成できませんでした" },
+          },
+        });
         console.debug("タブが作成できませんでした");
         return;
       }
@@ -55,6 +61,12 @@ export default defineBackground(() => {
       });
 
       if (!isTabLoaded) {
+        await sdk.background_updateVideoEpisodeCountMutation({
+          input: {
+            id: action.id,
+            log: { message: "タブの読み込みが完了しませんでした" },
+          },
+        });
         console.debug("タブの読み込みが完了しませんでした");
         return;
       }
@@ -69,14 +81,21 @@ export default defineBackground(() => {
         },
       });
       if (episodeCount === undefined) {
+        await sdk.background_updateVideoEpisodeCountMutation({
+          input: {
+            id: action.id,
+            log: { message: "エピソードが見つかりませんでした" },
+          },
+        });
         console.debug("エピソードが見つかりませんでした");
         return;
       }
 
-      await sdk.background_updateScrapedData({
+      await sdk.background_updateVideoEpisodeCountMutation({
         input: {
-          id: scrape.id,
+          id: action.id,
           episodeCount,
+          log: { message: "エピソード数を取得しました" }
         },
       });
     } finally {

@@ -2,14 +2,17 @@ import type { CodegenConfig } from '@graphql-codegen/cli'
  
 const config: CodegenConfig = {
    schema: 'http://localhost:3333/graphql',
-   documents: ['src/**/*.gql'],
+   documents: ['**/gql/index.gql'],
   generates: {
-    './src/gql/generated.ts': {
+    'generated.ts': {
       plugins: [
         'typescript',
         'typescript-operations',
         'typescript-graphql-request',
       ],
+      config: {
+        enumsAsTypes: true,
+      }
     },
   }
 }

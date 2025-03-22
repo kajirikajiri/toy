@@ -1,8 +1,5 @@
 class Video < ApplicationRecord
   include Validator
-
-  after_create Callback
-  after_update Callback
 end
 
 # == Schema Information
