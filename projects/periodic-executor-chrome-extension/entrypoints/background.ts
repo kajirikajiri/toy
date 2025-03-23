@@ -95,7 +95,10 @@ export default defineBackground(() => {
         input: {
           id: action.id,
           episodeCount,
-          log: { message: "エピソード数を取得しました" }
+          log: {
+            message: "エピソード数を取得しました",
+            episodeCount,
+          }
         },
       });
     } finally {
