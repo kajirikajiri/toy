@@ -13,9 +13,9 @@ end
 #  id              :string           not null, primary key
 #  completed_at    :datetime
 #  executable_type :string           not null
-#  logs            :text
+#  log             :text
 #  pattern         :integer          default("update_video_episode_count"), not null
-#  status          :integer          default(0), not null
+#  status          :integer          default("pending"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  executable_id   :string           not null

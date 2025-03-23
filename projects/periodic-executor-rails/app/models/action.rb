@@ -12,8 +12,8 @@ class Action < ApplicationRecord
     failed: 2, # 失敗
   }
 
-  # logsのセッターでhashならjsonにする
-  def logs=(value)
+  # logのセッターでhashならjsonにする
+  def log=(value)
     super(value.is_a?(Hash) ? value.to_json : value)
   end
 end
@@ -25,9 +25,9 @@ end
 #  id              :string           not null, primary key
 #  completed_at    :datetime
 #  executable_type :string           not null
-#  logs            :text
+#  log             :text
 #  pattern         :integer          default("update_video_episode_count"), not null
-#  status          :integer          default(0), not null
+#  status          :integer          default("pending"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  executable_id   :string           not null

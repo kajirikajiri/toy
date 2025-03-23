@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_22_110136) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_23_123010) do
   create_table "actions", id: :string, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_22_110136) do
     t.string "executable_id", null: false
     t.datetime "completed_at"
     t.integer "status", default: 0, null: false
-    t.text "logs"
+    t.text "log"
   end
 
   create_table "slack_messages", id: :string, force: :cascade do |t|
