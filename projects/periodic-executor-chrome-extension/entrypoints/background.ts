@@ -38,10 +38,9 @@ export default defineBackground(() => {
         await sdk.background_updateVideoEpisodeCountMutation({
           input: {
             id: action.id,
-            log: { message: "タブが作成できませんでした" },
+            browserExtensionResult: 'failed_to_create_tab',
           },
         });
-        console.debug("タブが作成できませんでした");
         return;
       }
 
@@ -64,10 +63,9 @@ export default defineBackground(() => {
         await sdk.background_updateVideoEpisodeCountMutation({
           input: {
             id: action.id,
-            log: { message: "タブの読み込みが完了しませんでした" },
+            browserExtensionResult: 'failed_to_create_tab',
           },
         });
-        console.debug("タブの読み込みが完了しませんでした");
         return;
       }
 
@@ -84,21 +82,17 @@ export default defineBackground(() => {
         await sdk.background_updateVideoEpisodeCountMutation({
           input: {
             id: action.id,
-            log: { message: "エピソードが見つかりませんでした" },
+            browserExtensionResult: 'episode_not_found',
           },
         });
-        console.debug("エピソードが見つかりませんでした");
         return;
       }
 
       await sdk.background_updateVideoEpisodeCountMutation({
         input: {
           id: action.id,
+          browserExtensionResult: 'episode_count_fetched',
           episodeCount,
-          log: {
-            message: "エピソード数を取得しました",
-            episodeCount,
-          }
         },
       });
     } finally {

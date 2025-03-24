@@ -21,19 +21,22 @@ class Action::Form::UpdateVideoEpisodeCount
   def save!
     old_episode_count = video.episode_count
     new_episode_count = attributes[:episode_count]
-    log = {}
-    log[:episode_count] = "#{old_episode_count} -> #{new_episode_count}"
-    log[:frontend_log] = attributes[:log] if attributes[:log].present?
-    if old_episode_count.present? && old_episode_count >= new_episode_count
-      action.update!(status: Action::statuses[:completed], log: log)
+    browser_extension_result = attributes[:browser_extension_result]
+    if old_episode_count.blank?
+      action.update!(status: Action::statuses[:completed], result: Action.results[:episode_count_not_updated], browser_extension_result: browser_extension_result)
       return
     end
 
+    slack_message = nil
     ActiveRecord::Base.transaction do
-      video.update!(episode_count: new_episode_count)
-      action.update!(completed_at: Time.current, status: Action::statuses[:completed], log: log)
-      slack_message = SlackMessage.create!(channel: SlackMessage::CHANNELS[:chrome_bot], text: "新着エピソードあり #{video.title} #{attributes[:episode_count]}話")
-      PostSlackMessageJob.perform_later(slack_message.id)
+      result = Action.results[:no_change_in_episode_count]
+      if old_episode_count.present? && new_episode_count.present? && (old_episode_count < new_episode_count)
+        result = Action.results[:episode_count_updated]
+        video.update!(episode_count: new_episode_count)
+        slack_message = SlackMessage.create!(channel: SlackMessage::CHANNELS[:chrome_bot], text: "新着エピソードあり #{video.title} #{attributes[:episode_count]}話")
+      end
+      action.update!(completed_at: Time.current, status: Action::statuses[:completed], result:, browser_extension_result:)
     end
+    PostSlackMessageJob.perform_later(slack_message.id) if slack_message.present?
   end
 end

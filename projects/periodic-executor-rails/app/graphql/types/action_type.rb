@@ -1,12 +1,22 @@
 class Types::ActionType < Types::BaseObject
-  class ActionStatusType < Types::BaseEnum
+  class Types::ActionStatus < Types::BaseEnum
       Action.statuses.keys.each do |status|
         value status
       end
   end
-  class ActionPatternType < Types::BaseEnum
+  class Types::ActionPattern < Types::BaseEnum
     Action.patterns.keys.each do |pattern|
       value pattern
+    end
+  end
+  class Types::ActionResult < Types::BaseEnum
+    Action.results.keys.each do |result|
+      value result
+    end
+  end
+  class Types::ActionBrowserExtensionResult < Types::BaseEnum
+    Action.browser_extension_results.keys.each do |result|
+      value result
     end
   end
   class ExecutableType < Types::BaseUnion
@@ -27,8 +37,10 @@ class Types::ActionType < Types::BaseObject
   field :executable_type, String, null: false
   field :executable, ExecutableType, null: false
   field :log, GraphQL::Types::JSON, null: true
-  field :pattern, ActionPatternType, null: false
-  field :status, ActionStatusType, null: false
+  field :pattern, Types::ActionPattern, null: false
+  field :status, Types::ActionStatus, null: false
+  field :result, Types::ActionResult, null: false
+  field :browser_extension_result, Types::ActionBrowserExtensionResult, null: false
   field :created_at, GraphQL::Types::ISO8601DateTime, null: false
   field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 end
