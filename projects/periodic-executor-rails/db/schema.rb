@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_24_123222) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_03_060527) do
   create_table "actions", id: :string, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,10 +38,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_24_123222) do
     t.string "url", null: false
     t.integer "episode_count"
     t.string "title", null: false
-    t.integer "season", default: 1, null: false
+    t.integer "season", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title", "season"], name: "index_videos_on_title_and_season", unique: true
     t.index ["url"], name: "index_videos_on_url", unique: true
+  end
+
+  create_table "watch_lists", id: :string, force: :cascade do |t|
+    t.string "url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 end

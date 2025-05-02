@@ -1,5 +1,5 @@
 module Action::Validator
-  TYPE = %w[Video].freeze
+  TYPE = %w[Video WatchList].freeze
   extend ActiveSupport::Concern
   included do
     # executable_typeは指定されたもののみ

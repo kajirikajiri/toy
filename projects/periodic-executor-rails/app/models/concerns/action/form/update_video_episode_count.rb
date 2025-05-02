@@ -22,7 +22,7 @@ class Action::Form::UpdateVideoEpisodeCount
     old_episode_count = video.episode_count
     new_episode_count = attributes[:episode_count]
     browser_extension_result = attributes[:browser_extension_result]
-    if old_episode_count.blank?
+    if new_episode_count.blank?
       action.update!(status: Action::statuses[:completed], result: Action.results[:episode_count_not_updated], browser_extension_result: browser_extension_result)
       return
     end
@@ -30,10 +30,10 @@ class Action::Form::UpdateVideoEpisodeCount
     slack_message = nil
     ActiveRecord::Base.transaction do
       result = Action.results[:no_change_in_episode_count]
-      if old_episode_count.present? && new_episode_count.present? && (old_episode_count < new_episode_count)
+      if (old_episode_count.present? && new_episode_count.present? && (old_episode_count < new_episode_count)) || (old_episode_count.blank? && new_episode_count.present?)
         result = Action.results[:episode_count_updated]
         video.update!(episode_count: new_episode_count)
-        slack_message = SlackMessage.create!(channel: SlackMessage::CHANNELS[:chrome_bot], text: "新着エピソードあり #{video.title} #{attributes[:episode_count]}話")
+        slack_message = SlackMessage.create!(channel: SlackMessage::CHANNELS[:chrome_bot], text: "新着エピソードあり #{video.title} #{new_episode_count}話")
       end
       action.update!(completed_at: Time.current, status: Action::statuses[:completed], result:, browser_extension_result:)
     end

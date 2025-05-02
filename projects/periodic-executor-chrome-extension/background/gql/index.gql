@@ -1,10 +1,15 @@
 query background_getUnexecutedAction {
   getUnexecutedAction {
     id
+    pattern
     executable {
         ... on Video {
-            id
-            url
+          id
+          url
+        }
+        ... on WatchList {
+          id
+          url
         }
     }
   }
@@ -16,11 +21,22 @@ mutation background_updateVideoEpisodeCountMutation(
   updateVideoEpisodeCount(input: $input) {
     action {
       id
+      # NOTE: いる？
       executable {
         ... on Video {
             id
         }
       }
+    }
+  }
+}
+
+mutation background_createVideosMutation(
+  $input: CreateVideosMutationInput!
+) {
+  createVideos(input: $input) {
+    action {
+      id
     }
   }
 }

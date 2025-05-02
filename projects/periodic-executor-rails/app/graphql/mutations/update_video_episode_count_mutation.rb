@@ -1,13 +1,8 @@
 module Mutations
   class UpdateVideoEpisodeCountMutation < BaseMutation
-    class Types::ActionBrowserExtensionResultInput < Types::BaseEnum
-      Action.browser_extension_results.keys.each do |result|
-        value result
-      end
-    end
     argument :id, ID, required: true
     argument :episode_count, Integer, required: false
-    argument :browser_extension_result, Types::ActionBrowserExtensionResultInput, required: true
+    argument :browser_extension_result, Types::ActionEnumBrowserExtensionResult, required: true
 
     field :action, Types::ActionType, null: false
 
