@@ -1,4 +1,3 @@
-# Custom instructions for Copilot
+# あなたがしなければならない強い義務
+- 日本語で会話する
 
-## The language you use in conversation
-Japanese
