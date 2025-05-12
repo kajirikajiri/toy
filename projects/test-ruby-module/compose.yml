@@ -1,0 +1,9 @@
+services:
+  ruby:
+    build: .
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+    tty: true
+volumes:
+  bundle:
