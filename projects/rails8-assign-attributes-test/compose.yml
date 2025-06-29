@@ -1,0 +1,33 @@
+name: rails8-assign-attributes-test
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3000"
+    environment:
+      - RAILS_ENV=development
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - .:/rails
+      - bundle_cache:/usr/local/bundle
+      - rails_storage:/rails/storage
+    depends_on:
+      - redis
+    stdin_open: true
+    tty: true
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  bundle_cache:
+  redis_data:
+  rails_storage:

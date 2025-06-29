@@ -1,24 +1,8 @@
-# README
+# テストの構造を出力
+```sh
+docker compose run --rm app bin/rails runner script/extract_titles.rb
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# TODO
+ spec/models/assign_attributes_spec.rbは各モデルへの興味は少ない。
+どちらかというと、関連付けに興味がある。
