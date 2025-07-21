@@ -1,0 +1,8 @@
+{
+  // 学習中は無効化
+  "github.copilot.enable": {
+    "*": false
+  },
+  // 学習中は無効化
+  "github.copilot.nextEditSuggestions.enabled": false
+}
