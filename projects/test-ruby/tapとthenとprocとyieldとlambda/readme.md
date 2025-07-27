@@ -1,4 +1,4 @@
-# RubyのObject#tapとObject#then
+# RubyのObject#tapとObject#thenとProcとyieldとlambda
 - Object#tapはselfを引数としてブロックを評価しselfを返します。
 - #thenはselfを引数としてブロックを評価しブロックの結果を返します。
 - selfは特定のコンテキストにおける自身を表すオブジェクトである擬似変数です。
