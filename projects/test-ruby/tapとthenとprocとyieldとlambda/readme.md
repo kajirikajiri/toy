@@ -11,7 +11,8 @@
 - https://docs.ruby-lang.org/ja/latest/doc/glossary.html
   - Ruby言語のキーワードについて辞書のように使うことができる。例えばselfで検索するとレシーバーが出てくるような感じで使える。
 
-# Rubyファイルの動かし方
+## 補足
+Rubyファイルの動かし方
 ```sh
 docker run --rm -it -v $(pwd):/_a -w /_a ruby:slim ruby {relative_path}
 ```
